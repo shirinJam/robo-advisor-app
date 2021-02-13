@@ -1,0 +1,184 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<!--Upload Section and other information-->
+<div class="container robo" style="min-height: 400px!important;min-width: 93%!important;">	
+<section class='statis text-center'>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-3">
+			<div class="box bg-info">
+			<i class="fas fa-hourglass-half fa-2x"></i>
+			<h3 style="margin-top:10px;">{{time_span}}</h3>
+			<p class="lead">Time Span</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="box bg-danger">
+			<i class="fas fa-tachometer-alt fa-2x"></i>
+			<h3 style="margin-top:10px;">{{risk_tol}}</h3>
+			<p class="lead">Risk Tolerance (0 - 1)</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="box bg-warning">
+			<i class="fas fa-coins fa-2x"></i>
+			<h3 style="margin-top:10px;">{{amount}}</h3>
+			<p class="lead">Amount Invested ($)</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="box bg-success">
+			<i class="fas fa-hand-holding-usd fa-2x"></i>
+			<h3 style="margin-top:10px;">{{projected_amt}}</h3>
+			<p class="lead">Expected Returns ($)</p>
+			</div>
+		</div>
+		</div>
+	</div>
+</section>
+<div>
+	<hr class="question-divider" style="margin-top: 10px;">
+</div>
+<div class="row" style="width:100%">
+	<div class="col-6" style="margin: 10px 0 10px 0;">
+		<h4 style="color: #fff; margin-bottom: 20px; text-align: left; padding-left: 20px;">Current Portfolio</h4>
+		
+		<div id="piechart_3d" style="width: 100%; height: 500px;"></div>
+	</div>
+	<div class = "col-6" style="margin: 10px 0 10px 0;">
+		<h4 style="color: #fff; margin-bottom: 35px; text-align: left;">Detailed Portfolio distribution</h4>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					{% for col in column_names %}
+					<th>{{col}}</th>
+					{% endfor %}
+				<tr>
+			</thead>
+			<tbody>
+				{% for row in row_data %}
+				<tr>
+					{% for col, row_ in zip(column_names, row) %}
+					<td>{{row_}}</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="row" style="width:100%">
+	<div class="col-12" style="margin: 10px 0 10px 0;">
+		<h4 style="color: #fff; margin-bottom: 20px; text-align: left; padding-left: 20px;">Portfolio performance</h4>
+		
+		<div id="chart_div" style="width: 100%; height: 700px;"></div>
+	</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+	google.charts.load("current", {packages:["corechart"]});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			{% for key, value in data.items() %}
+				{% if value is string %}
+					['{{ key }}', '{{ value }}'],
+				{% else %}
+					['{{ key }}', {{ value }}],
+				{% endif %}
+			{% endfor %}
+		]);
+
+		var options = {
+			pieHole: 0.4,
+			backgroundColor: '#303030',
+			is3D: true,
+			colors:['#e76f51','#2a9d8f','#e63946','#118ab2','#ffd166'],
+			chartArea:{left:20,top:20,width:'100%',height:'100%'},
+			pieSliceText:'percentage',
+			legend: {textStyle: {color: 'white', fontSize: 16}}
+			// chartArea.backgroundColor: '#303030',
+		};
+
+		var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+		chart.draw(data, options);
+	}
+
+	  
+	google.charts.load('current', {'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawChart2);
+	function drawChart2() {
+		var data = google.visualization.arrayToDataTable([
+			['Year', 'Lower_bnd1', 'Median1', 'Upper_bnd1','Lower bound', 'Median', 'Upper bound'],
+			{% for index, row in monte_exp.iterrows() %}
+				[new Date({{ row[0] }}),{{ row[1] }},{{ row[2] }},{{ row[3] }},{{ row[4] }},{{ row[5] }},{{ row[6] }}],
+			{% endfor %}
+		]);
+		
+		var formatter = new google.visualization.NumberFormat({pattern: '$#,##0'});
+
+		// format number columns
+		for (var i = 1; i < data.getNumberOfColumns(); i++) {
+		formatter.format(data, i);
+		}
+
+		var options = {
+			isStacked:true,
+			backgroundColor: '#303030',
+			chartArea:{left:170,right:170,top:20,width:'100%',height:'80%'},
+			legend: {textStyle: {color: 'white', fontSize: 16}},
+			hAxis: {title: 'Year',  
+					titleTextStyle: {color: 'white', fontSize: 18, italic: false},
+					format: 'MMM dd, yyyy', 
+					textStyle: {color: 'white', fontSize: 16},
+					gridlines: {count: 30, color: 'transparent'}, 
+					minorGridlines:{ count: 0}},
+			vAxis: {title: 'Portfolio returns',
+					titleTextStyle: {color: 'white', fontSize: 18, italic: false},
+					format: '$#,###',
+					textStyle: {color: 'white', fontSize: 16},
+					gridlines: { count: 10},
+					viewWindow: {min: 4500}},
+			series: {
+			0: {
+				color: 'transparent',
+				areaOpacity: 1,
+				visibleInLegend: false
+			},
+			1: {
+				color: 'orange',
+				visibleInLegend: false
+			},
+			2: {
+				color: 'green',
+				visibleInLegend: false
+			},
+			3: {
+				type: 'line',
+				color: 'red'
+			},
+			4: {
+				type: 'line',
+				color: 'blue',
+			},
+			5: {
+				type: 'line',
+				color: 'green'
+			}
+			}
+		};
+
+	var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+	chart.draw(data, options);
+	}
+
+</script>
+
+{% endblock %}

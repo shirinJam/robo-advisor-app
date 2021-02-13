@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<!--Upload Section and other information-->
+<div class="container robo">
+<div class="row">
+	<div style="width:100%;margin:auto">
+		<div class="wrapper advance">
+			<form class="form-group adv_questions" id="question_form" autocomplete="off" action="{{ url_for('portfolio') }}" method="POST">
+
+				<!-- This is for Question on Investment -->
+				<div class="question_no">
+					16<hr class="question-divider">
+				</div>
+				<label for="investment_amt" style="color: white;"><strong>Q. Amount you want to invest (please note  you can only proceed with a minimum amount of 5000$)</strong></label>
+                <input id="investment_amt" type="number" min="5000" name="investment_amt" class="form-control" placeholder="Please enter investment amount *" required="required" style="width: 400px;margin: 10px 0px 25px 20px;">
+
+
+				<div class="quest-submit">
+				<!--<input type="submit" class="btn btn-primary btn-sm sub_btn" value="Export">-->
+				<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
+				<img src="/static/img/enter.svg" alt="Plottu" title="Next" height="20"> NEXT</button></div>
+			</form>
+		</div>
+	<div class="alert alert-danger alert-dismissible fade show" id="warning" style="display: none;">
+		<strong>Attention!</strong>  Please answer all the above questions
+	</div>
+	</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
