@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# excluding the virtual environment
+robo_adv/
+
+# excluding trial.ipynb file
+trial.ipynb
+
+# exclude vscode settings
+.vscode

@@ -1,0 +1,18 @@
+
+
+@media (max-width: 767px) {
+    /* Mobile menu */
+   
+    /* Home */
+    #home-heading h3 {
+        font-size: 20px;
+
+    }
+
+    #home-heading {
+		padding : 40px 10px;
+		vertical-align: middle;
+		text-align: center;
+    }
+    
+}
