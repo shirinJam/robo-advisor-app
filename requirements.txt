@@ -8,3 +8,4 @@ pandas
 python-dateutil
 scipy
 scikit-learn
+gunicorn
