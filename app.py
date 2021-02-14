@@ -77,11 +77,11 @@ app.secret_key = 'YbpemWvv8DHIteU0eY99DA'
                         # RISK SCORE CALCULATOR
 ######################################################################
 
-print(os.path.join(basedir, 'ML\\robo_advisor_model.sav'))
-loaded_model = pickle.load(open(os.path.join(basedir, 'ML\\robo_advisor_model.sav'), 'rb'))
+print(os.path.join(basedir, 'ML/robo_advisor_model.sav'))
+loaded_model = pickle.load(open(os.path.join(basedir, 'ML/robo_advisor_model.sav'), 'rb'))
 
 # taking input of the data
-assets_sel = pd.read_csv(os.path.join(basedir, 'ML\\data_for_robo.csv'),parse_dates=[0],index_col=0)
+assets_sel = pd.read_csv(os.path.join(basedir, 'ML/data_for_robo.csv'),parse_dates=[0],index_col=0)
 
 def risk_score_calculator(loaded_model=loaded_model):
 
