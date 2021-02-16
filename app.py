@@ -521,6 +521,11 @@ def portfolio():
     except:
         # rendering landing page for the non-registered users with all parameters
         return render_template('404.html')
+   
+ 
+@app.route('/healthcheck', methods=['GET'])
+def healthCheck():
+    return "Robzee is healthy",200
     
 # defining a method to handle 404 error by rendering 404.html file
 @app.errorhandler(404)
