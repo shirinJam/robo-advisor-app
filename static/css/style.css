@@ -28,7 +28,7 @@ b, strong {
 
 body {
 	font-family: 'Rubik', sans-serif;
-  background: linear-gradient(to bottom, #128ca5 0%,#128ca5 350px,#128ca5 350px,#000000 350px,#000000  100%);
+  background: #000000;
 }
 
 html, body {
