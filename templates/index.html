@@ -49,8 +49,8 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ml-auto">
-					<a class="header-links" href="https://www.google.com" target="_blank" rel="nofollow noopener noreferrer">CONTACT US</a>
-					<span style="color:#ffffff;font-size: 0.8em; margin-left:18px">CONNECTED</span><img src="/static/img/antenna.svg" alt="RobZEE" title="Connected" height="20" style="margin-left:8px">	
+					<a class="header-links" id="contact_us" href="{{ url_for('contact_us')}}" rel="nofollow noopener noreferrer">CONTACT US</a>
+					<span style="color:#ffffff;font-size: 0.8em; margin-left:18px">CONNECTED <img src="/static/img/antenna.svg" alt="RobZEE" title="Connected" height="20" style="margin-left:8px"></span>
 				</div>
 			</div>
 		</div>
@@ -71,62 +71,67 @@
 
 {% block content %}
 
-<!--Upload Section and other information-->
-<div class="container robo">
+<div class="container-fluid">
 	<div class="row">
-		<div style="width:100%;margin:auto">
-			<div class="wrapper">
-				
-				<form class="form-group" id="question_form" autocomplete="off" action="{{ url_for('adv_quest1') }}" method="POST">
+		<div class="col-9">
+			<!--main section-->
+			<div class="container robo">
+				<div class="row">
+					<div style="width:100%;margin:auto">
+						<div class="wrapper">
+							
+							<form class="form-group" id="question_form" autocomplete="off" action="{{ url_for('adv_quest1') }}" method="POST">
 
-					<!-- This is for Question No. 1 -->
-					<div class="name" style="color: white;">
-						<h2>Welcome,</h2>
-						<h5>Please enter below details</h5>
+								<!-- This is for Question No. 1 -->
+								<div class="name" style="color: white;">
+									<h2>Welcome,</h2>
+									<h5>Please enter below details</h5>
+								</div>
+								
+								<br>
+
+								<div class="form-group">
+									<label for="form_name" style="color: white;"><strong>Name</strong></label>
+									<input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" value="Anonymous" style="max-width: 400px;margin-bottom: 25px;">
+								</div>
+
+								<div class="form-group">
+									<label for="form_email" style="color: white;"><strong>Email</strong></label>
+									<input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" value="anonymous@email.com" style="max-width: 400px;margin-bottom: 30px;">
+								</div>
+
+								<div class="form-group">
+									<label for="financial_expert" style="color: white;margin-right: 20px;"><strong>Are you a financial expert?</strong></label> 
+									<input id="financial_expert" name="financial_expert" type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="YES" data-onstyle="dark" data-offstyle="light" data-style="border" data-width="75" data-height="15" checked style="margin-left: 30px;">
+								</div>
+
+								<div class="quest-submit">
+									<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
+									<img src="/static/img/enter.svg" alt="RobZEE" title="Next" height="20"> NEXT</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					
-					<br>
-
-					<div class="form-group">
-						<label for="form_name" style="color: white;"><strong>Name</strong></label>
-						<input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" value="Anonymous" style="width: 400px;margin-bottom: 25px;">
-					</div>
-
-					<div class="form-group">
-						<label for="form_email" style="color: white;"><strong>Email</strong></label>
-						<input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" value="anonymous@email.com" style="width: 400px;margin-bottom: 30px;">
-					</div>
-
-					<div class="form-group">
-						<label for="financial_expert" style="color: white;margin-right: 20px;"><strong>Are you a financial expert?</strong></label> 
-						<input id="financial_expert" name="financial_expert" type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="YES" data-onstyle="dark" data-offstyle="light" data-style="border" data-width="75" data-height="15" checked style="margin-left: 30px;">
-					</div>
-
-					<div class="quest-submit">
-					<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
-					<img src="/static/img/enter.svg" alt="RobZEE" title="Next" height="20"> NEXT</button></div>
-				</form>
+				</div>
 			</div>
 		</div>
 
+		<div class="col-3">
+			<div style="margin-top: 62px; float:left;margin-left:30px;max-width:300px">
+				<h5 class="header">RELATED</h5>
+				<hr class="divider">
+				<div id="questionA" style="padding: 10px">
+					<a href="#" data-featherlight="#mylightbox">What does the Robo Advisor do?</a>
+				</div>
+				<div id="mylightbox" class="Converter-explained"><h3 style="color:#fff">What does the Robo Advisor do?</h3><br> TODO </div>
+				<div id="questionB" style="padding: 10px">
+					<a href="#" data-featherlight="#mylightbox2">Next Question?</a>
+				</div>
+				<div id="mylightbox2" class="Converter-explained"><h3 style="color:#fff">Next Question?</h3><br> TODO </div>
+			</div>
+		</div>
 	</div>
 </div>
-</div>
-
-
-<div style="margin-top: 62px; float:left;margin-left:30px;max-width:300px">
-	<h5 class="header">RELATED</h5>
-	<hr class="divider">
-	<div id="questionA" style="padding: 10px">
-		<a href="#" data-featherlight="#mylightbox">What does the Robo Advisor do?</a>
-	</div>
-	<div id="mylightbox" class="Converter-explained"><h3 style="color:#fff">What does the Robo Advisor do?</h3><br> TODO </div>
-	<div id="questionB" style="padding: 10px">
-		<a href="#" data-featherlight="#mylightbox2">Next Question?</a>
-	</div>
-	<div id="mylightbox2" class="Converter-explained"><h3 style="color:#fff">Next Question?</h3><br> TODO </div>
-</div>
-
 {% endblock %}
 
 	

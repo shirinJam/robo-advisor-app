@@ -17,7 +17,7 @@ import os
 import re
 import sklearn
 import pickle
-from flask import Flask, render_template, request, make_response,redirect,url_for,session, jsonify
+from flask import Flask, render_template, request, make_response,redirect,url_for,session, jsonify, flash
 import string
 # from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
@@ -26,13 +26,16 @@ import yfinance as yf
 import scipy.optimize as optimize
 from scipy.stats import norm
 from dateutil.relativedelta import relativedelta
+from email_validator import validate_email, EmailNotValidError
+from flask_mail import Mail, Message
+import textwrap
 
 # defining base directory as per the location of app.py file
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # initiating flask here
 app = Flask(__name__)
-
+mail= Mail(app)
 ######################################################################
                         # DEFINING IMP VARIABLES
 ######################################################################
@@ -40,6 +43,14 @@ app = Flask(__name__)
 # assigning secret key for session information
 app.secret_key = 'YbpemWvv8DHIteU0eY99DA'
 
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'robofina.advisors@gmail.com'
+app.config['MAIL_PASSWORD'] = 'r0b0fina'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
 
 # # updating the app config regarding the upload file folder and dropzone
 # app.config.update(
@@ -522,7 +533,71 @@ def portfolio():
         # rendering landing page for the non-registered users with all parameters
         return render_template('404.html')
    
- 
+# this is the basic landing page for 1st set of questions in Robo Advisor
+@app.route('/contact_us', methods=['POST','GET'])
+def contact_us():
+    try:
+        if request.method == 'POST':
+                
+            # fetching name
+            name = request.form['txtName']
+            # fetching email
+            email = request.form['txtEmail']
+            # fetching message
+            message = request.form['txtMsg']
+            
+            try:
+                valid_email = validate_email(email)
+            except:
+                valid_email = False
+            
+            if valid_email:
+                
+                msg = Message('r0b0fina advisors - New message from ' + name , 
+                              sender='robofina.advisors@gmail.com', 
+                              recipients=['robofina.advisors@gmail.com'])
+                body_txt = """
+                            From: %s <%s>
+                            
+                            %s
+                            """ % (name, email, message)
+                msg.body = textwrap.dedent(body_txt)
+                mail.send(msg)
+                
+                msg = Message('Thank you for contacting - r0b0fina advisors', 
+                              sender='robofina.advisors@gmail.com', 
+                              recipients=[email])
+                body_txt = """
+                            Dear %s,
+                            
+                            Thank you for contacting us. We will try to answer your question as soon as possible. 
+                            
+                            All emails are answered within 24 by our support team.
+                            
+                            We appreciate your patience,
+                            r0b0fina Support Team
+                            %s
+                            """ % (name, 'robofina.advisors@gmail.com')
+                            
+                msg.body = textwrap.dedent(body_txt)
+                mail.send(msg)
+                
+                flash('Message has been submitted successfully','success')
+                return redirect(url_for('contact_us'))
+            
+            else:
+                
+                flash('Please enter correct email details!','error')
+                return redirect(url_for('contact_us'))  
+
+        else:
+            return render_template('contact_us.html')
+
+    except:
+        flash('Something went wrong, please try again later!','error')
+        return redirect(url_for('contact_us'))  
+
+
 @app.route('/healthcheck', methods=['GET'])
 def healthCheck():
     return "Robzee is healthy",200
@@ -540,4 +615,4 @@ def too_large(e):
 
 # running above python script
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)

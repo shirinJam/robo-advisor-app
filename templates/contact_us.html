@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container robo" style="min-width: 96%!important; text-align:center!important; margin-left: auto; float: unset;">	
+	<div class="row">
+		<div class="col-5">
+			<div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
+		</div>
+		<div class="col-7 ">
+			<div class="container contact-form">
+				<div class="contact-image">
+					<img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+				</div>
+				<form class="form-group" id="contact_form" autocomplete="off" action="{{ url_for('contact_us') }}" method="POST">
+					<h3>Drop Us a Message</h3>
+					{% for category, message in get_flashed_messages(with_categories=True) %}
+						<div class="flash flash-{{category}}">{{ message }}</div>
+					{% endfor %}
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" required>
+							</div>
+							<div class="form-group">
+								<input type="email" id="email" name="txtEmail" class="form-control" placeholder="Your Email *" value="">
+								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							</div>
+							<div id="valid_email" style="color: red;"></div>
+							<div>
+								<button type="submit" id='validate' class="btnContact" value="Send Message">
+									Send Message
+								</button>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 250px;" required></textarea>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

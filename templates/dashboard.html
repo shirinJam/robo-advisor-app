@@ -2,83 +2,86 @@
 
 {% block content %}
 
+<!--main section-->
+<div class="container robo" style="min-height: 400px!important;min-width: 97%!important; text-align:center!important;">	
+	<section class='statis text-center'>
+		<div class="container-fluid">
+			<div class="row">
+			<div class="col-md-3">
+				<div class="box bg-info">
+				<i class="fas fa-hourglass-half fa-2x"></i>
+				<h3 style="margin-top:10px;">{{time_span}}</h3>
+				<p class="lead">Time Span</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="box bg-danger">
+				<i class="fas fa-tachometer-alt fa-2x"></i>
+				<h3 style="margin-top:10px;">{{risk_tol}}</h3>
+				<p class="lead">Risk Tolerance (0 - 1)</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="box bg-warning">
+				<i class="fas fa-coins fa-2x"></i>
+				<h3 style="margin-top:10px;">{{amount}}</h3>
+				<p class="lead">Amount Invested ($)</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="box bg-success">
+				<i class="fas fa-hand-holding-usd fa-2x"></i>
+				<h3 style="margin-top:10px;">{{projected_amt}}</h3>
+				<p class="lead">Expected Returns ($)</p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+	<div>
+		<hr class="question-divider" style="margin-top: 10px;">
+	</div>
+	<div class="row" style="width:100%">
+		<div class="col-6" style="margin: 10px 0 10px 0;">
+			<h4 style="color: #fff; margin-bottom: 20px; text-align: left; padding-left: 20px;">Current Portfolio</h4>
+			
+			<div id="piechart_3d" style="width: 100%; height: 500px;"></div>
+		</div>
+		<div class = "col-6" style="margin: 10px 0 10px 0;">
+			<h4 style="color: #fff; margin-bottom: 35px; text-align: left;">Detailed Portfolio distribution</h4>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						{% for col in column_names %}
+						<th>{{col}}</th>
+						{% endfor %}
+					<tr>
+				</thead>
+				<tbody>
+					{% for row in row_data %}
+					<tr>
+						{% for col, row_ in zip(column_names, row) %}
+						<td>{{row_}}</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div>
+		<hr class="question-divider" style="margin-top: 10px;">
+	</div>
+	<div class="row" style="width:100%">
+		<div class="col-12" style="margin: 10px 0 10px 0;">
+			<h4 style="color: #fff; margin-bottom: 20px; text-align: left; padding-left: 20px;">Portfolio performance</h4>
+			
+			<div id="chart_div" style="width: 100%; height: 700px;"></div>
+		</div>
+	</div>
+</div>
 
-<!--Upload Section and other information-->
-<div class="container robo" style="min-height: 400px!important;min-width: 93%!important;">	
-<section class='statis text-center'>
-	<div class="container-fluid">
-		<div class="row">
-		<div class="col-md-3">
-			<div class="box bg-info">
-			<i class="fas fa-hourglass-half fa-2x"></i>
-			<h3 style="margin-top:10px;">{{time_span}}</h3>
-			<p class="lead">Time Span</p>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="box bg-danger">
-			<i class="fas fa-tachometer-alt fa-2x"></i>
-			<h3 style="margin-top:10px;">{{risk_tol}}</h3>
-			<p class="lead">Risk Tolerance (0 - 1)</p>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="box bg-warning">
-			<i class="fas fa-coins fa-2x"></i>
-			<h3 style="margin-top:10px;">{{amount}}</h3>
-			<p class="lead">Amount Invested ($)</p>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="box bg-success">
-			<i class="fas fa-hand-holding-usd fa-2x"></i>
-			<h3 style="margin-top:10px;">{{projected_amt}}</h3>
-			<p class="lead">Expected Returns ($)</p>
-			</div>
-		</div>
-		</div>
-	</div>
-</section>
-<div>
-	<hr class="question-divider" style="margin-top: 10px;">
-</div>
-<div class="row" style="width:100%">
-	<div class="col-6" style="margin: 10px 0 10px 0;">
-		<h4 style="color: #fff; margin-bottom: 20px; text-align: left; padding-left: 20px;">Current Portfolio</h4>
-		
-		<div id="piechart_3d" style="width: 100%; height: 500px;"></div>
-	</div>
-	<div class = "col-6" style="margin: 10px 0 10px 0;">
-		<h4 style="color: #fff; margin-bottom: 35px; text-align: left;">Detailed Portfolio distribution</h4>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					{% for col in column_names %}
-					<th>{{col}}</th>
-					{% endfor %}
-				<tr>
-			</thead>
-			<tbody>
-				{% for row in row_data %}
-				<tr>
-					{% for col, row_ in zip(column_names, row) %}
-					<td>{{row_}}</td>
-					{% endfor %}
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
-</div>
-<div class="row" style="width:100%">
-	<div class="col-12" style="margin: 10px 0 10px 0;">
-		<h4 style="color: #fff; margin-bottom: 20px; text-align: left; padding-left: 20px;">Portfolio performance</h4>
-		
-		<div id="chart_div" style="width: 100%; height: 700px;"></div>
-	</div>
-</div>
-</div>
-</div>
+
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 

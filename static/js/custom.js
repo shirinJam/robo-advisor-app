@@ -33,6 +33,37 @@ $(function () {
     });
 });
 
+// ###################################################################################
+//                                     CONTACT PAGE
+// ###################################################################################
+
+$(function () {
+    $("#contact_us").on("click",function(event){
+         window.onbeforeunload = false;
+    });
+});
+
+
+$(function () {
+    $("#validate").on("click",function(event){
+
+        function validateEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+        
+        const email = $("#email").val();
+        console.log(email.length);
+        if ((validateEmail(email)) && (email.length > 0)) {
+            $('#valid_email').text('');
+            window.onbeforeunload = false;
+        } 
+        else {
+        $('#valid_email').text(email + ' is not valid email id!');
+        event.preventDefault();
+        }
+    });
+});
 
 
 
@@ -60,6 +91,10 @@ $(document).ready(function() {
     });
 })
 
+
+// ###################################################################################
+//                                     Slider
+// ###################################################################################
 
 // For slider1 for Net Worth
 const slider = document.getElementById('sliderPrice1');
@@ -131,7 +166,9 @@ filterInputs2.forEach((input, indexInput) => {
   })
 });
 
-
+// ###################################################################################
+//                                 Currency Converter
+// ###################################################################################
 
 
 // for currency converter
@@ -196,4 +233,3 @@ const makeHttpRequest = (url, callback) => {
 
 renderOptions(currencies)
 formEl.addEventListener('submit', submitHandler)
-

@@ -1,6 +1,5 @@
 Flask
 Flask-SQLAlchemy
-gunicorn
 itsdangerous
 Jinja2
 numpy
@@ -8,5 +7,6 @@ pandas
 python-dateutil
 scipy
 scikit-learn
-gunicorn
 yfinance
+email-validator
+Flask-Mail

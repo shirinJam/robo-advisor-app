@@ -2,239 +2,285 @@
 
 {% block content %}
 
-<!--Upload Section and other information-->
-<div class="container robo" style="min-height: 400px!important;">
-<div class="row">
-	<div style="width:100%;margin:auto">
-		<div class="wrapper advance">
-			<form class="form-group adv_questions" id="question_form" autocomplete="off" action="{{ url_for('adv_quest3') }}" method="POST">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-9">
+			<!--main section-->
+			<div class="container robo" style="min-height: 400px!important;">
+				<div class="row">
+					<div style="width:100%;margin:auto">
+						<div class="wrapper">
+							<form class="form-group adv_questions" id="question_form" autocomplete="off" action="{{ url_for('adv_quest3') }}" method="POST">
 
-				<!-- This is for Question No. 8 -->
-				<div class="question_no">
-					(8 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	Which of the following statements comes closest to the amount of financial risk that you are willing to take when you save or make investments??</strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_8a" type="radio" name="risk_cap" value="1">
-						<label for="q_8a">Not willing to take any financial risks </label>
-					</div>
-					<div class="md-radio">
-						<input id="q_8b" type="radio" name="risk_cap" value="2"> 
-						<label for="q_8b">Take average financial risks expecting to earn average returns</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_8c" type="radio" name="risk_cap" value="3">
-						<label for="q_8c">Take above average financial risks expecting to earn above average returns</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_8d" type="radio" name="risk_cap" value="4">
-						<label for="q_8d">Take substantial financial risk expecting to earn substantial returns</label>
-					</div>
-					<div id="valid_risk_cap" style="color: red;"></div>
-				</div>
+								<!-- This is for Question No. 8 -->
+								<div class="question_no">
+									(8 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	Which of the following statements comes closest to the amount of  
+									<span class="field_explained">financial risk<span class="field_explained_text">
+										Financial risk - the degree of uncertainty inherent in an investment decision. 
+										In general, investors seek higher returns to compensate for taking higher risks.
+									</span></span> 
+									that you are willing to take when you save or make investments??</strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_8a" type="radio" name="risk_cap" value="1">
+										<label for="q_8a">Not willing to take any financial risks </label>
+									</div>
+									<div class="md-radio">
+										<input id="q_8b" type="radio" name="risk_cap" value="2"> 
+										<label for="q_8b">Take average financial risks expecting to earn average returns</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_8c" type="radio" name="risk_cap" value="3">
+										<label for="q_8c">Take above average financial risks expecting to earn above average returns</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_8d" type="radio" name="risk_cap" value="4">
+										<label for="q_8d">Take substantial financial risk expecting to earn substantial returns</label>
+									</div>
+									<div id="valid_risk_cap" style="color: red;"></div>
+								</div>
 
-				<!-- This is for Question No. 9 -->
-				<div class="question_no">
-					(9 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	How large of a decline in your investment’s value would you be willing to accept in any one-year period? Assume for this example that your initial investment is worth $100,000.</strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_9a" type="radio" name="invest_decline" value="1">
-						<label for="q_9a">Less than $5,000</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_9b" type="radio" name="invest_decline" value="2"> 
-						<label for="q_9b">$10,000</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_9c" type="radio" name="invest_decline" value="3">
-						<label for="q_9c">$20,000</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_9d" type="radio" name="invest_decline" value="4">
-						<label for="q_9d">$25,000 or more</label>
-					</div>
-					<div id="valid_invest_decline" style="color: red;"></div>
-				</div>
+								<!-- This is for Question No. 9 -->
+								<div class="question_no">
+									(9 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	How large of a decline in your investment’s value would you be willing to accept in any one-year period? Assume for this example that your initial investment is worth $100,000.</strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_9a" type="radio" name="invest_decline" value="1">
+										<label for="q_9a">Less than $5,000</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_9b" type="radio" name="invest_decline" value="2"> 
+										<label for="q_9b">$10,000</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_9c" type="radio" name="invest_decline" value="3">
+										<label for="q_9c">$20,000</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_9d" type="radio" name="invest_decline" value="4">
+										<label for="q_9d">$25,000 or more</label>
+									</div>
+									<div id="valid_invest_decline" style="color: red;"></div>
+								</div>
 
-				<!-- This is for Question No. 10 -->
-				<div class="question_no">
-					(10 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	When you think of the word “risk”, which of the following words comes to mind first? </strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_10a" type="radio" name="risk_mind" value="1">
-						<label for="q_10a">Loss</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_10b" type="radio" name="risk_mind" value="2"> 
-						<label for="q_10b">Uncertainty</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_10c" type="radio" name="risk_mind" value="3">
-						<label for="q_10c">Opportunity</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_10d" type="radio" name="risk_mind" value="4">
-						<label for="q_10d">Thrill</label>
-					</div>
-					<div id="valid_risk_mind" style="color: red;"></div>
-				</div>
-
-
-				<!-- This is for Question No. 11 -->
-				<div class="question_no">
-					(11 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	Assume that your financial plan is statistically likely to fail. Which of the following actions would you perceive as the most appropriate way to increase the likelihood of your financial plan’s success?</strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_11a" type="radio" name="success_plan" value="1">
-						<label for="q_11a">Lowering your future expectations</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_11b" type="radio" name="success_plan" value="2"> 
-						<label for="q_11b">Saving more</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_11c" type="radio" name="success_plan" value="3">
-						<label for="q_11c">Selling assets</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_11d" type="radio" name="success_plan" value="4">
-						<label for="q_11d">Taking on more risk with your investments</label>
-					</div>
-					<div id="valid_success_plan" style="color: red;"></div>
-				</div>
-
-				
-				<!-- This is for Question No. 12 -->
-				<div class="question_no">
-					(12 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	Assume you had a portfolio with a balance of $100,000. Given the best and worst case returns of the four investment choices below, which would you prefer over the course of a one-year period?</strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_12a" type="radio" name="best_worst" value="1">
-						<label for="q_12a">$10,000 gain best case; $0 loss worst case; $4,500 gain average case</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_12b" type="radio" name="best_worst" value="2"> 
-						<label for="q_12b">$18,000 gain best case; $12,000 loss worst case; $6,000 gain average case</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_12c" type="radio" name="best_worst" value="3">
-						<label for="q_12c">$26,000 gain best case; $18,000 loss worst case; $8,000 gain average case</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_12d" type="radio" name="best_worst" value="4">
-						<label for="q_12d">$35,000 gain best case; $30,000 loss worst case; $12,000 gain average case</label>
-					</div>
-					<div id="valid_best_worst" style="color: red;"></div>
-				</div>
-
-				
-				<!-- This is for Question No. 13 -->
-				<div class="question_no">
-					(13 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	Suppose a relative left you an inheritance of $100,000, stipulating in the will that you had to invest all of the money into one of the following choices. Which one would you prefer?</strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_13a" type="radio" name="investment_choice" value="1">
-						<label for="q_13a">A savings account or money market mutual fund</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_13b" type="radio" name="investment_choice" value="2"> 
-						<label for="q_13b">A mutual fund that owns stocks and bonds</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_13c" type="radio" name="investment_choice" value="3">
-						<label for="q_13c">A portfolio of 15 common stocks</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_13d" type="radio" name="investment_choice" value="4">
-						<label for="q_13d">Commodities like gold, silver, and oil</label>
-					</div>
-					<div id="valid_investment_choice" style="color: red;"></div>
-				</div>
+								<!-- This is for Question No. 10 -->
+								<div class="question_no">
+									(10 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	When you think of the word “risk”, which of the following words comes to mind first? </strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_10a" type="radio" name="risk_mind" value="1">
+										<label for="q_10a">Loss</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_10b" type="radio" name="risk_mind" value="2"> 
+										<label for="q_10b">Uncertainty</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_10c" type="radio" name="risk_mind" value="3">
+										<label for="q_10c">Opportunity</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_10d" type="radio" name="risk_mind" value="4">
+										<label for="q_10d">Thrill</label>
+									</div>
+									<div id="valid_risk_mind" style="color: red;"></div>
+								</div>
 
 
-				<!-- This is for Question No. 14 -->
-				<div class="question_no">
-					(14 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	Given your current financial situation, which of the following describes your need to take risk with your finances, in order to accomplish your primary goal?</strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_14a" type="radio" name="primary_goal_risk" value="1">
-						<label for="q_14a">I need to take extremely little to no financial risk to accomplish my goal</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_14b" type="radio" name="primary_goal_risk" value="2"> 
-						<label for="q_14b">I need to take a little financial risk to accomplish my goal</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_14c" type="radio" name="primary_goal_risk" value="3">
-						<label for="q_14c">I need to take a moderate amount of financial risk to accomplish my goal</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_14d" type="radio" name="primary_goal_risk" value="4">
-						<label for="q_14d">I need to take considerable financial risk in order to accomplish my goal</label>
-					</div>
-					<div id="valid_primary_goal_risk" style="color: red;"></div>
-				</div>
+								<!-- This is for Question No. 11 -->
+								<div class="question_no">
+									(11 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	Assume that your financial plan is statistically likely to fail. Which of the following actions would you perceive as the most appropriate way to increase the likelihood of your financial plan’s success?</strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_11a" type="radio" name="success_plan" value="1">
+										<label for="q_11a">Lowering your future expectations</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_11b" type="radio" name="success_plan" value="2"> 
+										<label for="q_11b">Saving more</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_11c" type="radio" name="success_plan" value="3">
+										<label for="q_11c">Selling assets</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_11d" type="radio" name="success_plan" value="4">
+										<label for="q_11d">Taking on more risk with your investments</label>
+									</div>
+									<div id="valid_success_plan" style="color: red;"></div>
+								</div>
+
+								
+								<!-- This is for Question No. 12 -->
+								<div class="question_no">
+									(12 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	Assume you had a  
+									<span class="field_explained">portfolio<span class="field_explained_text">
+										Portfolio Investment is a collection of financial investments that may contain a 
+										wide range of assets including real estate, commodities, cash, etc. 
+										In order to reduce risk by allocating investments among various industries, 
+										financial instruments and other categories.
+									</span></span> 
+									with a balance of $100,000. Given the best and worst case returns of the four investment choices below, which would you prefer over the course of a one-year period?</strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_12a" type="radio" name="best_worst" value="1">
+										<label for="q_12a">$10,000 gain best case; $0 loss worst case; $4,500 gain average case</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_12b" type="radio" name="best_worst" value="2"> 
+										<label for="q_12b">$18,000 gain best case; $12,000 loss worst case; $6,000 gain average case</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_12c" type="radio" name="best_worst" value="3">
+										<label for="q_12c">$26,000 gain best case; $18,000 loss worst case; $8,000 gain average case</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_12d" type="radio" name="best_worst" value="4">
+										<label for="q_12d">$35,000 gain best case; $30,000 loss worst case; $12,000 gain average case</label>
+									</div>
+									<div id="valid_best_worst" style="color: red;"></div>
+								</div>
+
+								
+								<!-- This is for Question No. 13 -->
+								<div class="question_no">
+									(13 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	Suppose a relative left you an inheritance of $100,000, stipulating in the will that you had to invest all of the money into one of the following choices. Which one would you prefer?</strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_13a" type="radio" name="investment_choice" value="1">
+										<label for="q_13a">A 
+											<span class="field_explained">savings account<span class="field_explained_text">
+												Savings account is a basic type of bank account that allows you to deposit money, 
+												keep it safe, and withdraw funds after a certain period of time, while earning interest 
+												which is paid by bank for using your money.
+											</span></span>
+											 or 
+											<span class="field_explained">money market mutual fund<span class="field_explained_text">
+												Money market mutual fund is a type of mutual fund that invests only in ultra-safe investments
+												 such as Treasury securities that are guaranteed by the U.S. government.
+											</span></span>
+										</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_13b" type="radio" name="investment_choice" value="2"> 
+										<label for="q_13b">A 
+											<span class="field_explained">mutual fund<span class="field_explained_text">
+												Mutual fund is one single investment product you can buy shares in that is made up of a carefully chosen portfolio 
+												or collection of stocks in many different companies. Those are chosen carefully to balance each other out
+												 (diversified portfolio) so that you have the best possible chance of seeing some profit from your investment.
+											</span></span>
+											 that owns stocks and bonds</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_13c" type="radio" name="investment_choice" value="3">
+										<label for="q_13c">A portfolio of 15 common stocks</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_13d" type="radio" name="investment_choice" value="4">
+										<label for="q_13d">
+											<span class="field_explained">Commodities<span class="field_explained_text">
+												Commodities are known to be risky investment as their market supply and demand is highly versatile. 
+												This is due to hardly predictable uncertainties like natural disasters, weather patterns, epidemics.
+											</span></span>
+											 like gold, silver, and oil</label>
+									</div>
+									<div id="valid_investment_choice" style="color: red;"></div>
+								</div>
 
 
-				<!-- This is for Question No. 15 -->
-				<div class="question_no">
-					(15 of 15)<hr class="question-divider">
-				</div>
-				<label class="control-label"><strong>Q.	Which of the following describes the length of time until you wish to make significant withdrawals from your portfolio investment?</strong></label>
-				<!-- For slice type selection radio buttons -->
-				<div class="type_options">
-					<div class="md-radio">
-						<input id="q_15a" type="radio" name="investment_length" value="1">
-						<label for="q_15a">0-5 years</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_15b" type="radio" name="investment_length" value="2"> 
-						<label for="q_15b">6-10 years</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_15c" type="radio" name="investment_length" value="3">
-						<label for="q_15c">11-20 years</label>
-					</div>
-					<div class="md-radio">
-						<input id="q_15d" type="radio" name="investment_length" value="4">
-						<label for="q_15d">21+ years</label>
-					</div>
-					<div id="valid_investment_length" style="color: red;"></div>
-				</div>
+								<!-- This is for Question No. 14 -->
+								<div class="question_no">
+									(14 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	Given your current financial situation, which of the following describes your need to take risk with your finances, in order to accomplish your primary goal?</strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_14a" type="radio" name="primary_goal_risk" value="1">
+										<label for="q_14a">I need to take extremely little to no financial risk to accomplish my goal</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_14b" type="radio" name="primary_goal_risk" value="2"> 
+										<label for="q_14b">I need to take a little financial risk to accomplish my goal</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_14c" type="radio" name="primary_goal_risk" value="3">
+										<label for="q_14c">I need to take a moderate amount of financial risk to accomplish my goal</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_14d" type="radio" name="primary_goal_risk" value="4">
+										<label for="q_14d">I need to take considerable financial risk in order to accomplish my goal</label>
+									</div>
+									<div id="valid_primary_goal_risk" style="color: red;"></div>
+								</div>
 
 
-				<div class="quest-submit">
-				<!--<input type="submit" class="btn btn-primary btn-sm sub_btn" value="Export">-->
-				<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
-				<img src="/static/img/enter.svg" alt="Plottu" title="Next" height="20"> NEXT</button></div>
-			</form>
+								<!-- This is for Question No. 15 -->
+								<div class="question_no">
+									(15 of 15)<hr class="question-divider">
+								</div>
+								<label class="control-label"><strong>Q.	Which of the following describes the length of time until you wish to make significant withdrawals from your 
+									<span class="field_explained">portfolio investment<span class="field_explained_text">
+										Portfolio Investment is a collection of financial investments that may contain a 
+										wide range of assets including real estate, commodities, cash, etc. 
+										In order to reduce risk by allocating investments among various industries, 
+										financial instruments and other categories.
+									</span></span>
+									?</strong></label>
+								<!-- For slice type selection radio buttons -->
+								<div class="type_options">
+									<div class="md-radio">
+										<input id="q_15a" type="radio" name="investment_length" value="1">
+										<label for="q_15a">0-5 years</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_15b" type="radio" name="investment_length" value="2"> 
+										<label for="q_15b">6-10 years</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_15c" type="radio" name="investment_length" value="3">
+										<label for="q_15c">11-20 years</label>
+									</div>
+									<div class="md-radio">
+										<input id="q_15d" type="radio" name="investment_length" value="4">
+										<label for="q_15d">21+ years</label>
+									</div>
+									<div id="valid_investment_length" style="color: red;"></div>
+								</div>
+
+								<div class="alert alert-danger alert-dismissible fade show" id="warning" style="display: none;">
+									<strong>Attention!</strong>  Please answer all the above questions
+								</div>
+
+								<div class="quest-submit">
+								<!--<input type="submit" class="btn btn-primary btn-sm sub_btn" value="Export">-->
+								<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
+								<img src="/static/img/enter.svg" alt="Plottu" title="Next" height="20"> NEXT</button></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	<div class="alert alert-danger alert-dismissible fade show" id="warning" style="display: none;">
-		<strong>Attention!</strong>  Please answer all the above questions
 	</div>
-	</div>
-</div>
-</div>
 </div>
 
 
