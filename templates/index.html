@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Robz€€ Advisors</title>
+	<title>Robofina Advisors</title>
 	
 	<link rel="shortcut icon" href="{{url_for('static', filename='img/robo_advisor_logo.png')}}" />
 	<!-- Setting encoding to utf-8 -->
@@ -43,7 +43,10 @@
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="{{ url_for('index')}}"><img src="{{url_for('static', filename='img/robo_advisor_logo.png')}}" alt="Robz€€  Advisors" height="70" style="margin-right: 10px"> Robz€€  Advisors</a>
+			<a class="navbar-brand" href="{{ url_for('index')}}">
+				<img src="{{url_for('static', filename='img/robo_advisor_logo.png')}}" alt="Robofina Advisors" height="60" style="margin:auto 10px auto 0px;">
+				<span style="color:white;font-family: 'Lucida Handwriting';font-size: 30pt;vertical-align: middle;"><i>Robofina  Advisors</i></span>
+			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -104,6 +107,8 @@
 									<label for="financial_expert" style="color: white;margin-right: 20px;"><strong>Are you a financial expert?</strong></label> 
 									<input id="financial_expert" name="financial_expert" type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="YES" data-onstyle="dark" data-offstyle="light" data-style="border" data-width="75" data-height="15" checked style="margin-left: 30px;">
 								</div>
+								
+								<small id="emailHelp" class="form-text text-muted">Disclaimer: We do not save any data!</small>
 
 								<div class="quest-submit">
 									<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
@@ -157,13 +162,6 @@
 
 	<!-- Bootstrap toggle -->
 	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-
-	<script type="text/javascript">
-	    window.onbeforeunload = function() {
-	        return "Are you sure you want to leave?";
-	    };
-
-	</script>
 
 </body>
 </html>

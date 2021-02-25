@@ -317,9 +317,7 @@ def index():
 # this is the 1st page containing basic questions based on the input received from index page
 @app.route('/adv_quest1', methods=['POST','GET'])
 def adv_quest1():
-    #return render_template('1st_page.html')
     try:
-        # first extracts the information of the image from the submit form on 'completed' page
         if request.method == "POST":
 
             session['name']  = request.form['name']
@@ -333,13 +331,12 @@ def adv_quest1():
                 session['financial_expert'] = 'YES'
 
             print("financial_expert:",session.get('financial_expert'))
-            
             # rendering the 1st question page for the users
             return render_template('1st_page.html')
 
-    except:
-        # if there is any problem with the url then it will go to 404 page
-        return render_template('404.html')
+    except Exception as e:
+        error_content = "Application is unable to process landing page entries."
+        return render_template("500.html", error_content = error_content, error = str(e))
 
 
 
@@ -389,10 +386,9 @@ def adv_quest2():
             # rendering landing page for the non-registered users with all parameters
             return render_template('2nd_page.html')
 
-    except:
-        # rendering landing page for the non-registered users with al
-        # l parameters
-        return render_template('404.html')
+    except Exception as e:
+        error_content = "Application is unable to process demographic data."
+        return render_template("500.html", error_content = error_content, error = str(e))
 
 
 # this is the 2nd page containing advanced questions based on the input received from 1st page
@@ -452,9 +448,9 @@ def adv_quest3():
             # rendering landing page for the non-registered users with all parameters
             return render_template('3rd_page.html')
 
-    except:
-        # rendering landing page for the non-registered users with all parameters
-        return render_template('404.html')
+    except Exception as e:
+        error_content = "Application is unable to process behavioral data."
+        return render_template("500.html", error_content = error_content, error = str(e))
 
 
 # this is the 2nd page containing advanced questions based on the input received from 1st page
@@ -529,9 +525,9 @@ def portfolio():
                                                                 risk_tol = risk_tol, amount = amount,
                                                                     projected_amt=project_amt, monte_exp=monte_data)
 
-    except:
-        # rendering landing page for the non-registered users with all parameters
-        return render_template('404.html')
+    except Exception as e:
+        error_content = "Application is unable to create dashboard."
+        return render_template("500.html", error_content = error_content, error = str(e))
    
 # this is the basic landing page for 1st set of questions in Robo Advisor
 @app.route('/contact_us', methods=['POST','GET'])
@@ -560,6 +556,7 @@ def contact_us():
                             From: %s <%s>
                             
                             %s
+                            
                             """ % (name, email, message)
                 msg.body = textwrap.dedent(body_txt)
                 mail.send(msg)
@@ -600,7 +597,7 @@ def contact_us():
 
 @app.route('/healthcheck', methods=['GET'])
 def healthCheck():
-    return "Robzee is healthy",200
+    return "Robofina is healthy",200
     
 # defining a method to handle 404 error by rendering 404.html file
 @app.errorhandler(404)
@@ -608,10 +605,6 @@ def not_found(e):
     # note that we set the 404 status explicitly
     return render_template('404.html'), 404
 
-# server side handling if the file uploaded is not handled by server
-@app.errorhandler(413)
-def too_large(e):
-    return "File is too large", 413
 
 # running above python script
 if __name__ == '__main__':

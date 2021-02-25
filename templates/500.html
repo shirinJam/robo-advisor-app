@@ -3,6 +3,26 @@
 {% block content %}
 
 <!-- for 500 error page -->
-<!-- TODO -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-9">
+			<!--main section-->
+			<div class="container robo">
+				<div class="row">
+					<div style="width:100%;margin:auto">
+						<div class="wrapper advance">
+                            <h3 style="color:#fff">Oeps, something went wrong!</h3><br>
+                            <div id="error_page">
+                                <p><b>error:</b> {{error}}<br>
+                                {{error_content}}</p>
+                                <p>Go back <a href="{{ url_for('index') }}">Home</a> or <a href="mailto:robofina.advisors@gmail.com?subject={{error_content}}&body=Hi,%0D%0A%0D%0AI am getting following error message on Robofina website : %0D%0A%0D%0Aerror: {{error}} %0D%0A%0D%0A{{error_content}} %0D%0A%0D%0AThanks,%0D%0A%0D%0A">Report</a></p>
+                           </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 {% endblock %}
