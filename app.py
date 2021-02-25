@@ -46,7 +46,7 @@ app.secret_key = 'YbpemWvv8DHIteU0eY99DA'
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'robofina.advisors@gmail.com'
-app.config['MAIL_PASSWORD'] = 'r0b0fina'
+app.config['MAIL_PASSWORD'] = 'r0b0fina156'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
@@ -554,8 +554,8 @@ def contact_us():
             if valid_email:
                 
                 msg = Message('r0b0fina advisors - New message from ' + name , 
-                              sender='robofina.advisors@gmail.com', 
-                              recipients=['robofina.advisors@gmail.com'])
+                                sender='robofina.advisors@gmail.com', 
+                                recipients=['robofina.advisors@gmail.com'])
                 body_txt = """
                             From: %s <%s>
                             
@@ -565,8 +565,8 @@ def contact_us():
                 mail.send(msg)
                 
                 msg = Message('Thank you for contacting - r0b0fina advisors', 
-                              sender='robofina.advisors@gmail.com', 
-                              recipients=[email])
+                                sender='robofina.advisors@gmail.com', 
+                                recipients=[email])
                 body_txt = """
                             Dear %s,
                             
