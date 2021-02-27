@@ -569,7 +569,7 @@ def contact_us():
                             
                             Thank you for contacting us. We will try to answer your question as soon as possible. 
                             
-                            All emails are answered within 24 by our support team.
+                            All emails are answered within 24 hours by our support team.
                             
                             We appreciate your patience,
                             robofina Support Team
