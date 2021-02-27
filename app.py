@@ -561,7 +561,7 @@ def contact_us():
                 msg.body = textwrap.dedent(body_txt)
                 mail.send(msg)
                 
-                msg = Message('Thank you for contacting - r0b0fina advisors', 
+                msg = Message('Thank you for contacting - robofina advisors', 
                                 sender='robofina.advisors@gmail.com', 
                                 recipients=[email])
                 body_txt = """
@@ -572,7 +572,7 @@ def contact_us():
                             All emails are answered within 24 by our support team.
                             
                             We appreciate your patience,
-                            r0b0fina Support Team
+                            robofina Support Team
                             %s
                             """ % (name, 'robofina.advisors@gmail.com')
                             
