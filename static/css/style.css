@@ -504,6 +504,7 @@ h2.title {
 
 input, select {
   border: 1px solid #ccc;
+  border-radius:10px;
 }
 
 #amount {
@@ -534,11 +535,13 @@ form.currency_converter input[type="submit"] {
   background: #fff;
   margin: 0px 0 0px 0;
   padding-top: 10px;
+  border-radius: 10px;
 }
 
 #symbol {
   max-width: 25%;
   text-align: center;
+  color: rgb(215, 25, 25)!important;
 }
 
 
@@ -638,6 +641,16 @@ td, th {
                             Contact us page
 ========================================================================== */
 
+.google-map {
+  margin-top: 7%;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  border-radius: 5%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .contact-form{
   background: #fff;
