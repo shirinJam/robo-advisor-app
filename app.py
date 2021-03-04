@@ -24,12 +24,15 @@ from dateutil.relativedelta import relativedelta
 from email_validator import validate_email
 from flask_mail import Mail, Message
 import textwrap
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 # defining base directory as per the location of app.py file
-basedir = os.path.abspath(os.path.dirname(__file__))
+basedir  = os.path.abspath(os.path.dirname(__file__))
+# filename = os.path.join(basedir, "secrets.env")
 
-filename = os.path.join(basedir, "secrets.env")
+# loading .env file here
+# load_dotenv(dotenv_path=filename)
+
 
 # initiating flask here
 app = Flask(__name__)
@@ -42,13 +45,13 @@ mail= Mail(app)
 ######################################################################
 
 # assigning secret key for session information
-app.secret_key = os.getenv("SECRET_KEY")
+app.secret_key = 'YbpemWvv8DHIteU0eY99DA'
 
 # setting configuration for mail server access
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'robofina.advisors@gmail.com'
-app.config['MAIL_PASSWORD'] = os.getenv("ROBO_PASSWORD")
+app.config['MAIL_PASSWORD'] = 'r0b0fina156'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
@@ -679,4 +682,4 @@ def not_found(e):
 
 # running above python script
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=False)
