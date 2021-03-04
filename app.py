@@ -9,48 +9,56 @@ Created on Wed Nov 15 12:43:41 2020
                         # IMPORTING LIBRARIES
 ######################################################################
 
-from pandas.core.indexing import convert_to_index_sliceable
 import pandas as pd
 import numpy as np
-import requests
 import os
 import re
 import sklearn
 import pickle
-from flask import Flask, render_template, request, make_response,redirect,url_for,session, jsonify, flash
-import string
-# from flask_sqlalchemy import SQLAlchemy
-# from flask_migrate import Migrate
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import datetime
 import yfinance as yf
 import scipy.optimize as optimize
 from scipy.stats import norm
 from dateutil.relativedelta import relativedelta
-from email_validator import validate_email, EmailNotValidError
+from email_validator import validate_email
 from flask_mail import Mail, Message
 import textwrap
+from dotenv import load_dotenv
 
 # defining base directory as per the location of app.py file
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+filename = os.path.join(basedir, "secrets.env")
+
 # initiating flask here
 app = Flask(__name__)
+
+# initiating the mail application for this flask
 mail= Mail(app)
+
 ######################################################################
                         # DEFINING IMP VARIABLES
 ######################################################################
 
 # assigning secret key for session information
-app.secret_key = 'YbpemWvv8DHIteU0eY99DA'
+app.secret_key = os.getenv("SECRET_KEY")
 
+# setting configuration for mail server access
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'robofina.advisors@gmail.com'
-app.config['MAIL_PASSWORD'] = 'r0b0fina156'
+app.config['MAIL_PASSWORD'] = os.getenv("ROBO_PASSWORD")
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
+# initiating mail settings
 mail = Mail(app)
+
+
+######################################################################
+                        # DATA STORAGE (OMITTED)
+######################################################################
 
 # # updating the app config regarding the upload file folder and dropzone
 # app.config.update(
@@ -85,17 +93,37 @@ mail = Mail(app)
 
 
 ######################################################################
+                        # ML MODEL LOAD
+######################################################################
+
+# loading the machine learning model which was saved ML task when flask application starts
+loaded_model = pickle.load(open(os.path.join(basedir, 'ML/robo_advisor_model.sav'), 'rb'))
+
+######################################################################
+                    # LOADING YAHOO FINANCE DATA
+######################################################################
+
+# Since we are using only pre corona period, we have already imported the data from yahoo finance for
+# all the used ETFs and saved it in .csv file which we are loading it below
+# the data input can be made dynamic with latest date as per use case
+assets_sel = pd.read_csv(os.path.join(basedir, 'ML/data_for_robo.csv'),
+                         parse_dates=[0],
+                         index_col=0)
+
+######################################################################
                         # RISK SCORE CALCULATOR
 ######################################################################
 
-print(os.path.join(basedir, 'ML/robo_advisor_model.sav'))
-loaded_model = pickle.load(open(os.path.join(basedir, 'ML/robo_advisor_model.sav'), 'rb'))
-
-# taking input of the data
-assets_sel = pd.read_csv(os.path.join(basedir, 'ML/data_for_robo.csv'),parse_dates=[0],index_col=0)
-
 def risk_score_calculator(loaded_model=loaded_model):
+    """This function calculates the risk score by taking in consideration the inputs from the usser
 
+    Args:
+        loaded_model (machine learning model): This takes the machine leanring model which has been imported by default. Defaults to loaded_model.
+
+    Returns:
+        [list]: It returns both demograghic and behavioural risk in a list
+    """
+    # empty list defining
     risk_tol = []
 
     ################## PART 1 : Demographic Risk ####################
@@ -163,25 +191,42 @@ def risk_score_calculator(loaded_model=loaded_model):
     feature_list = [[AGE07,KIDS07,INCOME07,NETWORTH07,EDCL07_2,EDCL07_3,EDCL07_4,MARRIED07_2,
                     OCCAT107_2,OCCAT107_3,OCCAT107_4,RISK07_2,RISK07_3,RISK07_4]]
 
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!MACHINE LEARNING SECTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # Predicting the risk tolerance score based on the inputs provided through feature list
     demo_risk = loaded_model.predict(feature_list)
     risk_tol.append(demo_risk.tolist()[0])
 
     ################## PART 2 : Behavioral Risk ####################
 
+    # calculating behaviour risk based on below formula
     behav_risk = ((session.get('primary_goal_risk') + session.get('investment_length')) * 0.5187) + \
                     ((session.get('investment_choice') + session.get('risk_mind')) * 0.2957) + \
                         ((session.get('risk_cap') + session.get('invest_decline') + \
                             session.get('success_plan') + session.get('best_worst')) * 0.1856)
 
-    # Normalizing
+    # normalizing behavioral risk
     behav_risk = ((behav_risk-2.37)/(9.47-2.47))
+    
+    # append it to the list which needs to be returned
     risk_tol.append(behav_risk)
     
+    # returning the list with demo and beha risk back
     return risk_tol
 
+######################################################################
+                        # ASSET ALLOCATION
+######################################################################
 
 #Asset allocation given the Return, variance
 def get_asset_allocation(riskTolerance):
+    """Calculates assets based on risk tolerance score
+
+    Args:
+        riskTolerance ([float]): Average of demo and beha risk
+
+    Returns:
+        [dict]: Mapping of each ETF with the respective calculated weights
+    """
     
     if 0 <= riskTolerance < 0.2:
         stocks = 0.20
@@ -209,9 +254,10 @@ def get_asset_allocation(riskTolerance):
     session['other']  = other
     ################### For Minimum Variance ######################
 
-    #for minimum variance portfolio based
-    def port_alloc(type,asset_list):
+    # below function calculates minimum variance for each subgroup using scipy optimizer
+    def port_alloc(sb_weight,asset_list):
 
+        # sub selecting ETFs based on the asset_list
         val = assets_sel[asset_list]
 
         def portfolio_stats(weights):
@@ -224,9 +270,13 @@ def get_asset_allocation(riskTolerance):
         def minimize_variance(weights):  
             return portfolio_stats(weights)
 
-        constraints = ({'type' : 'eq', 'fun': lambda x: np.sum(x) - type})
+        constraints = ({'type' : 'eq', 'fun': lambda x: np.sum(x) - sb_weight})
         num_assets = len(asset_list)
-        bounds = tuple((0,type) for x in range(num_assets))
+        if len(asset_list)>3:
+            bounds = [(0,sb_weight) for x in range(num_assets-1)] + [(0,(sb_weight/10))]
+            bounds = tuple(bounds)
+        else:
+            bounds = tuple((0,sb_weight) for x in range(num_assets))
         initializer = num_assets * [1./num_assets,]
 
         min_variance=optimize.minimize(minimize_variance,
@@ -239,30 +289,47 @@ def get_asset_allocation(riskTolerance):
         return list(zip(asset_list,list(min_variance_weights)))
 
 
-    stock_weights = pd.DataFrame(port_alloc(type=stocks,asset_list=['VTI','VEA','VWO']))
-    bond_weights  = pd.DataFrame(port_alloc(type=bonds,asset_list=['EMB','BNDX','MUB']))
-    other_weights = pd.DataFrame(port_alloc(type=other,asset_list=['VDE','VNQ','VHT']))
+    stock_weights = pd.DataFrame(port_alloc(sb_weight=stocks,asset_list=['VTI','VEA','VWO','VHT','VNQ']))
+    bond_weights  = pd.DataFrame(port_alloc(sb_weight=bonds,asset_list=['EMB','BNDX','MUB']))
+    other_weights = pd.DataFrame(port_alloc(sb_weight=other,asset_list=['VIPSX']))
     final_weights = stock_weights.append(bond_weights.append(other_weights))
     final_weights = final_weights.set_index(0)
     
+    # returning allocated portfolio in dictionary
     return final_weights.to_dict()
 
+######################################################################
+                        # MONTE CARLO SIMULATION
+######################################################################
 
 # function for monte carlo simulation
 def monte_simulation(years):
-    
+    """This function simulates monte carlo for next n years
+
+    Args:
+        years (int): Furture number of years on which you need to simulate it
+
+    Returns:
+        dataframe: Return dataframe to be provided to the frontend for the chart
+    """
+    # generating business dates for next 'n' years
     dates = pd.bdate_range(start=datetime.today(),
                             end=datetime.today() + \
                                 relativedelta(years=years))
+    # storing the length of dates
     days  = len(dates)
     
+    # convert the portfolio allocation into a list 
     portfolio     = session.get('portfolio_alloc')
     portfolio_col = list(portfolio['1'].keys())
-    # print(portfolio_col)
     
+    # filtering data according to selected ETFs
     filter_data   = assets_sel.filter(items=portfolio_col)
+    
+    # calculating portfolio stock price
     port_data     = filter_data.assign(**portfolio['1']).mul(filter_data).sum(1)
     
+    # calculating log returns of the portfolio stock price
     log_return    = np.log(1+ port_data.pct_change())
     
     #Calculate the Drift
@@ -283,13 +350,16 @@ def monte_simulation(years):
     # running the simulation
     for t in range(1,days):
         price_list[t] = price_list[t-1]*daily_returns[t]
-        
+    
+    # fetching 25th, 50th and 75th percentile data
     median_proj = np.median(price_list,axis=1)
     upper_proj  = np.percentile(price_list,75,axis=1)
     lower_proj  = np.percentile(price_list,25,axis=1)
     
+    # formatting dates 
     dates       = dates.map(lambda t: +t.strftime('%Y,%m,%d')) 
     
+    # formating data into dataframe to be provided to google charts in front end
     monte_data  = pd.DataFrame(np.column_stack([dates,
                                                     lower_proj,
                                                         median_proj-lower_proj,
@@ -298,6 +368,7 @@ def monte_simulation(years):
                                                                     median_proj,
                                                                         upper_proj]))
     
+    # returning dataframe
     return monte_data
     
 
@@ -305,12 +376,11 @@ def monte_simulation(years):
                         # DEFINING ROUTES
 ######################################################################
 
-# this is the basic landing page for 1st set of questions in Robo Advisor
+# this is the basic landing page for robo advisor
 @app.route('/')
 def index():
-    # rendering landing page for the non-registered users with all parameters
+    # rendering landing page for robo advisor
     session.clear()
-    print(session)  
     return render_template('index.html')
 
 
@@ -321,16 +391,15 @@ def adv_quest1():
         if request.method == "POST":
 
             session['name']  = request.form['name']
-            print("name:",session.get('name'))
+
             session['email'] = request.form['email']
-            print("email:",session.get('email'))
+
 
             if "financial_expert" in request.form:
                 session['financial_expert'] = 'NO'
             else:
                 session['financial_expert'] = 'YES'
 
-            print("financial_expert:",session.get('financial_expert'))
             # rendering the 1st question page for the users
             return render_template('1st_page.html')
 
@@ -343,9 +412,9 @@ def adv_quest1():
 # this is the 2nd page containing advanced questions based on the input received from 1st page
 @app.route('/adv_quest2', methods=['POST','GET'])
 def adv_quest2():
-    #return render_template('2nd_page.html')
+    
     try:
-        # first extracts the information of the image from the submit form on 'completed' page
+        # first extracts the information passed by the user for demographic data
         if request.method == "POST":
 
             # fetching age 
@@ -369,19 +438,9 @@ def adv_quest2():
 
             #fetching children category
             session['children'] = int(request.form['children'])
-
+            
             #fetching work category
             session['work'] = request.form['work']
-
-            print("age:",session.get('age'))
-            print('net_income:',session.get('net_income'))
-            print('salary:',session.get('salary'))
-            print('education:',session.get('education'))
-            print('marriage:',session.get('marriage'))
-            print('children:',session.get('children'))
-            print('work:',session.get('work'))
-
-            print(request.form)
 
             # rendering landing page for the non-registered users with all parameters
             return render_template('2nd_page.html')
@@ -391,12 +450,11 @@ def adv_quest2():
         return render_template("500.html", error_content = error_content, error = str(e))
 
 
-# this is the 2nd page containing advanced questions based on the input received from 1st page
+# this is the 2nd page containing advanced questions based on behavior
 @app.route('/adv_quest3', methods=['POST','GET'])
 def adv_quest3():
-    #return render_template('3rd_page.html')
     try:
-        # first extracts the information of the image from the submit form on 'completed' page
+        # first extracts the information passed by the user for behavioural data
         if request.method == "POST":
             
             # fetching the amount of risk user can take from
@@ -422,30 +480,20 @@ def adv_quest3():
 
             # fetching answer for 'length of investment'
             session['investment_length'] = int(request.form['investment_length'])
-            
-            print('risk_capacity:',session.get('risk_cap'))
-            print('invest_decline:',session.get('invest_decline'))
-            print('risk_mind:',session.get('risk_mind'))
-            print('success_plan:',session.get('success_plan'))
-            print('best_worst:',session.get('best_worst'))
-            print('investment_choice',session.get('investment_choice'))
-            print('primary_goal_risk',session.get('primary_goal_risk'))
-            print('investment_length',session.get('investment_length'))
-            print(request.form)
 
-            calculated_risk = risk_score_calculator()
+            ################################################################################
+            ########################## CALCULATING RISK TOLERANCE ##########################
+            ################################################################################
+            calculated_risk      = risk_score_calculator()
             session['demo_risk'] = calculated_risk[0]
             session['beha_risk'] = calculated_risk[1]
             session['avg_risk']  = (session['demo_risk'] + session['beha_risk'])/2
             
-            print('demo_risk:',session.get('demo_risk'))
-            print('beha_risk:',session.get('beha_risk'))
-            print('avg_risk:',session.get('avg_risk'))
-            
+            ################################################################################
+            ############################### ASSET ALLOCATION ###############################
+            ################################################################################
             session['portfolio_alloc'] = get_asset_allocation(session['avg_risk'])
-            print('portfolio_alloc:',session.get('portfolio_alloc'))
 
-            # rendering landing page for the non-registered users with all parameters
             return render_template('3rd_page.html')
 
     except Exception as e:
@@ -453,72 +501,92 @@ def adv_quest3():
         return render_template("500.html", error_content = error_content, error = str(e))
 
 
-# this is the 2nd page containing advanced questions based on the input received from 1st page
+# this is the amount entered page which will render the final dashboard page
 @app.route('/portfolio', methods=['POST','GET'])
 def portfolio():
-    #return render_template('3rd_page.html')
     try:
-        # first extracts the information of the image from the submit form on 'completed' page
         if request.method == "POST":
             
             # fetching the amount of risk user can take from
             session['amount'] = int(request.form['investment_amt'])
 
-            # create a dictionary
+            # create a dictionary with ETF and their respective mapping
             dic = {'BNDX': 'Vanguard Total International Bond ETF',
                     'EMB': 'iShares USD Emerging Markets Bond ETF',
                     'MUB': 'iShares National Muni Bond ETF',
                     'VDE': 'Vanguard Energy Index Fund ETF',
-                    'VEA': 'Vanguard Developed Markets Index Fund ETF',
                     'VHT': 'Vanguard Health Care Index Fund ETF',
+                    'VEA': 'Vanguard Developed Markets Index Fund ETF',
+                    'VIPSX': 'Vanguard Inflation-Protected Securities ETF',
                     'VNQ': 'Vanguard Real Estate Index Fund ETF',
                     'VTI': 'Vanguard Total Stock Market Index Fund ETF',
                     'VWO': 'Vanguard Emerging Markets Index Fund ETF'}
             
-            # creating final table
+            ################################################################################
+            ############################### TABLE CREATION #################################
+            ################################################################################
             port_allocation     = session.get('portfolio_alloc')
+            # converting portfolio dictionary to dataframe
             final_table         = pd.DataFrame(port_allocation).reset_index()
+            # assigning column name to the dataframe
             final_table.columns = ['ETFs','Weights']
+            # based on the 'dic' dictionary we are mapping the ETFs with its name
             etf_name            = final_table["ETFs"].map(dic)
+            # insert the ETF long form names corresponding to the ETFs in 2nd columns
             final_table.insert(loc=1, column='Holdings', value=etf_name)
-            final_table['Amount ($)']     = round(final_table['Weights']*session.get('amount'),2)
+            # calculating the amount to be invested in each ETFs
+            final_table['Amount ($)'] = round(final_table['Weights']*session.get('amount'),2)
+            # converting weights into string and representing it in percentage
             final_table['Weights'] = final_table['Weights'].apply(lambda x: str(round(100*x,2))+' %')
-            final_table                   = final_table.loc[~(final_table['Amount ($)']<1),:]
+            # filtering out ETFs which has 0 contribution amount
+            final_table = final_table.loc[~(final_table['Amount ($)']<1),:]
             
+            
+            ################################################################################
+            ################################# MONTE CARLO ##################################
+            ################################################################################
+            # creating a dictionary to map the the user selected field in time span with the real quantity of time span
             time_monte = {1 : 5,
                             2 : 10,
                                 3 : 20,
                                     4 : 22}
             
-            # # calling monte carlo function for simulation
+            # calling monte carlo function for simulation
             monte_data = monte_simulation(time_monte[session.get('investment_length')])
             
+            # fetching num of stocks and getting back the monte carlo number in terms of total price
             start_price = monte_data.iloc[0,1]
             last_price  = monte_data.iloc[-1,5]
             no_of_stock = session.get('amount')/start_price
             project_amt = int(no_of_stock * last_price)
             monte_data.iloc[:,1:] =  np.round(monte_data.iloc[:,1:] * no_of_stock,2)
             
-            data = {'Portfolio' : 'ETF distribution', 
-                        'Stocks' : session.get('stocks'), 
-                            'Bonds' : session.get('bonds'), 
-                                'Energy' : port_allocation['1']['VDE'], 
-                                    'Real Estates' : port_allocation['1']['VNQ'],
-                                        'Health Care' : port_allocation['1']['VHT']}
+            ################################################################################
+            ################################### PIE CHART ##################################
+            ################################################################################
             
+            data = {'Portfolio' : 'ETF distribution', 
+                        'Stocks' : session.get('stocks')-(port_allocation['1']['VNQ']+port_allocation['1']['VHT']), 
+                            'Bonds' : session.get('bonds'), 
+                                'Health Care' : port_allocation['1']['VHT'], 
+                                    'Real Estates' : port_allocation['1']['VNQ'],
+                                        'Cash Equivalents' : port_allocation['1']['VIPSX']}
+            
+            # passing time span in understandable format
             time_dict = {1 : '0-5 years',
                             2 : '6-10 years',
                                 3 : '11-20 years',
                                     4 : '21+ years'}
-            
             time_span   = time_dict[session.get('investment_length')]
             
+            # passing risk tolerance in frontend
             risk_tol    = str(round(session.get('avg_risk'),2))
             
+            # passing invested amount and its corresponding projected amount
             amount      = "{:,}".format(session.get('amount')) + ' USD'
             project_amt = "{:,}".format(project_amt) + ' USD'
             
-            # rendering landing page for the non-registered users with all parameters
+            # rendering the final dashboard page
             return render_template('dashboard.html', column_names=final_table.columns.values, 
                                                         row_data=list(final_table.values.tolist()),
                                                             zip=zip, data=data, time_span=time_span,
@@ -529,7 +597,8 @@ def portfolio():
         error_content = "Application is unable to create dashboard."
         return render_template("500.html", error_content = error_content, error = str(e))
    
-# this is the basic landing page for 1st set of questions in Robo Advisor
+   
+# this is contact us page
 @app.route('/contact_us', methods=['POST','GET'])
 def contact_us():
     try:
@@ -549,7 +618,7 @@ def contact_us():
             
             if valid_email:
                 
-                msg = Message('r0b0fina advisors - New message from ' + name , 
+                msg = Message('RoboFina advisors - New message from ' + name , 
                                 sender='robofina.advisors@gmail.com', 
                                 recipients=['robofina.advisors@gmail.com'])
                 body_txt = """
@@ -561,7 +630,7 @@ def contact_us():
                 msg.body = textwrap.dedent(body_txt)
                 mail.send(msg)
                 
-                msg = Message('Thank you for contacting - robofina advisors', 
+                msg = Message('Thank you for contacting - RoboFina advisors', 
                                 sender='robofina.advisors@gmail.com', 
                                 recipients=[email])
                 body_txt = """
@@ -572,7 +641,7 @@ def contact_us():
                             All emails are answered within 24 hours by our support team.
                             
                             We appreciate your patience,
-                            robofina Support Team
+                            RoboFina Support Team
                             %s
                             """ % (name, 'robofina.advisors@gmail.com')
                             
@@ -595,9 +664,11 @@ def contact_us():
         return redirect(url_for('contact_us'))  
 
 
+# defining route function for healthcheck
 @app.route('/healthcheck', methods=['GET'])
 def healthCheck():
-    return "Robofina is healthy",200
+    return "RoboFina is healthy",200
+
     
 # defining a method to handle 404 error by rendering 404.html file
 @app.errorhandler(404)
@@ -608,4 +679,4 @@ def not_found(e):
 
 # running above python script
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)

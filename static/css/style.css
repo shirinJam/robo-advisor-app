@@ -541,7 +541,7 @@ form.currency_converter input[type="submit"] {
 #symbol {
   max-width: 25%;
   text-align: center;
-  color: rgb(215, 25, 25)!important;
+  color: rgb(0, 0, 0)!important;
 }
 
 

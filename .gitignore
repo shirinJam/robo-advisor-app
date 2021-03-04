@@ -138,3 +138,5 @@ trial.ipynb
 # exclude vscode settings
 .vscode
 trial.ipynb
+app-old.py
+*.DS_Store

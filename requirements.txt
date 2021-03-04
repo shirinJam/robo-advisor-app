@@ -10,3 +10,4 @@ scikit-learn
 yfinance
 email-validator
 Flask-Mail
+python-dotenv
