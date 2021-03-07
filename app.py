@@ -5,6 +5,10 @@ Created on Wed Nov 15 12:43:41 2020
 @author: Shirin
 """
 
+__author__ = "Shirin Khosravi Jam"
+__copyright__ = "Copyright (C) 2021 Shirin Khosravi Jam"
+__version__ = "1.0"
+
 ######################################################################
                         # IMPORTING LIBRARIES
 ######################################################################
