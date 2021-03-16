@@ -1,0 +1,189 @@
+<!-- AUTHOR - SHIRIN KHOSRAVI JAM -->
+<!-- COPYRIGHT 2021 SHIRIN KHOSRAVI JAM -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RoboFina Advisors</title>
+	
+	<link rel="shortcut icon" href="{{url_for('static', filename='img/robo_advisor_logo.png')}}" />
+	<!-- Setting encoding to utf-8 -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Bootstrap css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Varela+Round" rel="stylesheet">
+	
+	<!-- fontawesome -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/all.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/fontawesome.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/fontawesome.min.css')}}">
+
+	<!-- Salary Slider -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.0/nouislider.css" rel="stylesheet">
+	
+	<!--style css-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+	
+	<!--responsive css-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/responsive.css')}}">
+
+	<!--featherlight css-->
+	<link href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+	<!-- Bootstrap toggle -->
+	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+<!--Navigation bar Section-->
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="{{ url_for('index')}}">
+				<img src="{{url_for('static', filename='img/robo_advisor_logo.png')}}" alt="Robofina Advisors" height="60" style="margin:auto 10px auto 0px;">
+				<span style="color:white;font-size: 22pt;vertical-align: middle;"><i>RoboFina  Advisors <sub style="font-size: 10pt;">Product by Shirin Khosravi Jam</sub></i></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav ml-auto">
+					<a class="header-links" id="contact_us" href="{{ url_for('contact_us')}}" rel="nofollow noopener noreferrer">CONTACT US</a>
+					<span style="color:#ffffff;font-size: 0.8em; margin-left:18px">CONNECTED <img src="/static/img/antenna.svg" alt="RobZEE" title="Connected" height="20" style="margin-left:8px"></span>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<!--HOME Section-->
+
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>	
+
+<div id="home-content-box" class="text-left">
+	<div id="home-heading">
+		<h1> <img style="vertical-align: text-top; margin-left: 30px; margin-right: 10px; padding-bottom:12px;" src="/static/img/robo_advisor_logo_2.png" height="50">Financial Robo Advisor<sup> BETA</sup></h1>
+	</div>
+</div>
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-9">
+			<!--main section-->
+			<div class="container robo">
+				<div class="row">
+					<div style="width:100%;margin:auto">
+						<div class="wrapper">
+							
+							<form class="form-group" id="question_form" autocomplete="off" action="{{ url_for('adv_quest1') }}" method="POST">
+
+								<!-- This is for Question No. 1 -->
+								<div class="name" style="color: white;">
+									<h2>Welcome,</h2>
+									<h5>Please enter below details</h5>
+								</div>
+								
+								<br>
+
+								<div class="form-group">
+									<label for="form_name" style="color: white;"><strong>Name</strong></label>
+									<input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" value="Anonymous" style="max-width: 400px;margin-bottom: 25px;">
+								</div>
+
+								<div class="form-group">
+									<label for="form_email" style="color: white;"><strong>Email</strong></label>
+									<input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" value="anonymous@email.com" style="max-width: 400px;margin-bottom: 30px;">
+								</div>
+
+								<div class="form-group">
+									<label for="financial_expert" style="color: white;margin-right: 20px;"><strong>Are you a financial expert?</strong></label> 
+									<input id="financial_expert" name="financial_expert" type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="YES" data-onstyle="dark" data-offstyle="light" data-style="border" data-width="75" data-height="15" checked style="margin-left: 30px;">
+								</div>
+								
+								<small id="emailHelp" class="form-text text-muted">Disclaimer: We do not save any data!</small>
+
+								<div class="quest-submit">
+									<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
+									<img src="/static/img/enter.svg" alt="RobZEE" title="Next" height="20"> NEXT</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-3">
+			<div style="margin-top: 62px; float:left;margin-left:30px;max-width:300px">
+				<h5 class="header">RELATED</h5>
+				<hr class="divider">
+				<div id="questionA" style="padding: 10px">
+					<a href="#" data-featherlight="#mylightbox">What does the Robo Advisor do?</a>
+				</div>
+				<div id="mylightbox" class="Converter-explained"><h3 style="color:#fff">What does the Robo Advisor do?</h3><br>
+					Robo advisors are software products that can help you manage your
+					 investments without the need to consult a financial advisor or self-manage your portfolio. 
+					 These products are offered by a wide variety of financial institutions. Some, such as Fidelity, 
+					 are established financial companies with a lengthy history. Others, like Acorns, were created 
+					 recently for the sole purpose of providing a robo advisor service. Robo advisors are an alternative 
+					 to traditional financial advisors, and they're usually a cheaper option. They're also an alternative 
+					 to an investor simply picking and choosing investments on their own.  <br><br>
+					 source: <a href="https://www.thebalance.com/what-is-a-robo-advisor-and-how-do-they-work-4097134" target="_blank">https://www.thebalance.com</a>
+					</div>
+				<div id="questionB" style="padding: 10px">
+					<a href="#" data-featherlight="#mylightbox2">How Robo Advisors Work?</a>
+				</div>
+				<div id="mylightbox2" class="Converter-explained"><h3 style="color:#fff">How Robo Advisors Work?</h3><br>
+					A new customer signing up for a robo advisor usually starts by supplying basic information about their 
+					investment goals through an online questionnaire. These questions may touch on subjects like your investment 
+					timeline, your risk tolerance, and how much money you have in savings. Robo advisors then run those answers 
+					through an algorithm to provide an asset allocation approach and build a portfolio of diversified investments 
+					that meets your goals. Once your funds are invested, the software can automatically rebalance your portfolio 
+					to ensure that it remains close to that target allocation. Many popular robo advisors encourage investors to 
+					regularly contribute to their accounts, such as small weekly deposits. The robo advisor will use those 
+					contributions to maintain target allocation. <br><br>
+					source: <a href="https://www.thebalance.com/what-is-a-robo-advisor-and-how-do-they-work-4097134" target="_blank">https://www.thebalance.com</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+	
+	<!-- Jquery javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Bootstrap javascript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	<!-- Font Awesome -->
+	<script src="{{url_for('static', filename='css/fontawesome/js/all.js')}}"></script>
+
+	<!-- Salary slider -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.0/nouislider.js"></script>
+
+	<!--custom JS-->
+	<script src="{{url_for('static', filename='js/custom.js')}}"></script>
+
+	<!-- Featherlight Popup -->
+	<script src="//code.jquery.com/jquery-latest.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Bootstrap toggle -->
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+</body>
+</html>

@@ -390,22 +390,32 @@ def index():
     session.clear()
     return render_template('index.html')
 
+@app.route('/welcome')
+def welcome():
+    # rendering landing page for robo advisor
+    session.clear()
+    return render_template('welcome.html')
+
+@app.route('/login_page', methods=["GET","POST"])
+def login_page():
+    return render_template('login.html')
+
 
 # this is the 1st page containing basic questions based on the input received from index page
 @app.route('/adv_quest1', methods=['POST','GET'])
 def adv_quest1():
     try:
-        if request.method == "POST":
+        # if request.method == "POST":
 
-            session['name']  = request.form['name']
+        #     session['name']  = request.form['name']
 
-            session['email'] = request.form['email']
+        #     session['email'] = request.form['email']
 
 
-            if "financial_expert" in request.form:
-                session['financial_expert'] = 'NO'
-            else:
-                session['financial_expert'] = 'YES'
+        #     if "financial_expert" in request.form:
+        #         session['financial_expert'] = 'NO'
+        #     else:
+        #         session['financial_expert'] = 'YES'
 
             # rendering the 1st question page for the users
             return render_template('1st_page.html')

@@ -1,6 +1,12 @@
-{% extends "index.html" %}
+{% extends "welcome.html" %}
 
 {% block content %}
+
+<div id="home-content-box" class="text-left">
+	<div id="home-heading">
+		<h1> <img style="vertical-align: text-top; margin-left: 30px; margin-right: 10px; padding-bottom:12px;" src="/static/img/robo_advisor_logo_2.png" height="50">Portfolio</h1>
+	</div>
+</div>
 
 <!--main section-->
 <div class="container robo" style="min-height: 400px!important;min-width: 97%!important; text-align:center!important;">	
@@ -11,28 +17,28 @@
 				<div class="box bg-info">
 				<i class="fas fa-hourglass-half fa-2x"></i>
 				<h3 style="margin-top:10px;">{{time_span}}</h3>
-				<p class="lead">Time Span</p>
+				<p class="lead" style="color:black;">Time Span</p>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="box bg-danger">
 				<i class="fas fa-tachometer-alt fa-2x"></i>
 				<h3 style="margin-top:10px;">{{risk_tol}}</h3>
-				<p class="lead">Risk Tolerance (0 - 1)</p>
+				<p class="lead" style="color:black;">Risk Tolerance (0 - 1)</p>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="box bg-warning">
 				<i class="fas fa-coins fa-2x"></i>
 				<h3 style="margin-top:10px;">{{amount}}</h3>
-				<p class="lead">Amount Invested ($)</p>
+				<p class="lead" style="color:black;">Amount Invested ($)</p>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="box bg-success">
 				<i class="fas fa-hand-holding-usd fa-2x"></i>
 				<h3 style="margin-top:10px;">{{projected_amt}}</h3>
-				<p class="lead">Expected Returns ($)</p>
+				<p class="lead" style="color:black;">Expected Returns ($)</p>
 				</div>
 			</div>
 			</div>

@@ -1,0 +1,167 @@
+<!-- AUTHOR - SHIRIN KHOSRAVI JAM -->
+<!-- COPYRIGHT 2021 SHIRIN KHOSRAVI JAM -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RoboFina Advisors</title>
+	
+	<link rel="shortcut icon" href="{{url_for('static', filename='img/robo_advisor_logo.png')}}" />
+	<!-- Setting encoding to utf-8 -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Bootstrap css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<!-- Deciding google font here-->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+	
+	<!-- fontawesome -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/all.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/fontawesome.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/fontawesome.min.css')}}">
+
+	<!-- Salary Slider -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.0/nouislider.css" rel="stylesheet">
+	
+	<!--style css-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+	
+	<!--responsive css-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/responsive.css')}}">
+
+	<!--featherlight css-->
+	<link href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+	<!-- Bootstrap toggle -->
+	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+<!--Navigation bar Section-->
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-gray fixed-top bg-shantanu">
+		<div class="container">
+			<a class="navbar-brand smooth-scrolling" href="{{ url_for('index')}}">
+				<img src="{{url_for('static', filename='img/robo_advisor_logo.png')}}" alt="Robofina Advisors" height="60" style="margin:auto 10px auto 0px;">
+				<span style="color:white;font-size: 22pt;vertical-align: middle;"><i>RoboFina  Advisors</i></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#shantanu-menu">
+					  <span class="navbar-toggler-icon"></span>
+				</button>
+			<div id="shantanu-menu" class="collapse navbar-collapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link smooth-scrolling" href="{{ url_for('contact_us')}}">Contact</a></li>
+					<li class="nav-item" style="width:150px; margin-left:10px;"><a class="nav-link btn btn-outline-primary btn-lg btn-general btn-white navtry" href="{{url_for('welcome')}}" title="Robo-advisor">GET STARTED!</a></li>
+					<li class="nav-item" style="width:100px; margin-left:20px;"><a class="nav-link btn btn-outline-primary btn-lg btn-general btn-white navtry" href="{{url_for('login_page')}}" title="Robo-advisor">LOGIN</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<!--HOME Section-->
+
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>	
+
+{% block content %}
+
+<div id="home-content-box" class="text-left">
+	<div id="home-heading">
+		<h1> <img style="vertical-align: text-top; margin-left: 30px; margin-right: 10px; padding-bottom:12px;" src="/static/img/robo_advisor_logo_2.png" height="50">Welcome</h1>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<!--main section-->
+			<div class="container robo" >
+				<div class="row">
+					<div style="width:100%;margin:auto">
+						<div class="wrapper">
+							
+							<form class="form-group" id="question_form" autocomplete="off" action="{{ url_for('adv_quest1') }}" method="POST">
+
+								<!-- This is for Question No. 1 -->
+								<div class="name" style="color: white;">
+									<h4>You are only 3 steps away from achieving your personalised Portfolio!</h4>
+							
+									<br>
+
+									<ol>
+										<li><h5>Answer the questions based on your demographic background</h5></li>
+										<li><h5>Read and carefully answer the scenario based questions</h5></li>
+										<li><h5>Finally provide your investment amount</h5></li>
+									</ol> 
+
+									<br>
+
+									<p style="color: white;">In case of any questions or assistance required please Contact us using <a href="{{ url_for('contact_us') }}">Contact Us</a> page</p>
+								
+								</div>
+
+								<!-- <div class="form-group">
+									<label for="form_name" style="color: white;"><strong>Name</strong></label>
+									<input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" value="Anonymous" style="max-width: 400px;margin-bottom: 25px;">
+								</div>
+
+								<div class="form-group">
+									<label for="form_email" style="color: white;"><strong>Email</strong></label>
+									<input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" value="anonymous@email.com" style="max-width: 400px;margin-bottom: 30px;">
+								</div>
+
+								<div class="form-group">
+									<label for="financial_expert" style="color: white;margin-right: 20px;"><strong>Are you a financial expert?</strong></label> 
+									<input id="financial_expert" name="financial_expert" type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="YES" data-onstyle="dark" data-offstyle="light" data-style="border" data-width="75" data-height="15" checked style="margin-left: 30px;">
+								</div>
+								 -->
+								<small id="emailHelp" class="form-text text-muted">Disclaimer: We do not save any data!</small>
+
+								<div class="quest-submit">
+									<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
+									<img src="/static/img/enter.svg" alt="RobZEE" title="Next" height="20"> NEXT</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+	
+	<!-- Jquery javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Bootstrap javascript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	<!-- Font Awesome -->
+	<script src="{{url_for('static', filename='css/fontawesome/js/all.js')}}"></script>
+
+	<!-- Salary slider -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.0/nouislider.js"></script>
+
+	<!--custom JS-->
+	<script src="{{url_for('static', filename='js/custom.js')}}"></script>
+
+	<!-- Featherlight Popup -->
+	<script src="//code.jquery.com/jquery-latest.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- Bootstrap toggle -->
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+</body>
+</html>

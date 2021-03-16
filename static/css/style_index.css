@@ -1,0 +1,691 @@
+/*==========================================================================
+				Default values:
+
+				font               : Roboto Condensed
+
+				Colors
+				Greenish blue      : #34c6d3    (Buttons,icons,links,lines and background)
+				Steel Gray         : #41464b	(headings)
+				Blue Bayoux		   : #64707b	(Paragraphs)
+				White              : #fff		(Texts with black background)
+				Black              : #000;
+
+========================================================================== */
+
+html, body{
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+	overflow-x:hidden;
+}
+
+p {
+	color: #64707b;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+/*h3 {
+	color: #41464b;
+	text-transform: uppercase;
+}
+*/
+
+/*==========================================================================		
+				                    NAVBAR
+========================================================================== */
+
+.navbar{
+	transition: all .5s ease-in-out;
+}
+
+.bg-shantanu{
+	background-color: rgba(0,0,0,1);
+	padding: 7px 10px;
+}
+
+.navbar .navbar-nav .nav-link{
+	color: #fff;
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+}
+
+.navbar .nav-item {
+	margin:auto;
+}
+
+.navbar .navbar-nav .nav-link:hover, .navbar .navbar-nav .nav-link:focus{
+	background-color: none;
+	color: #34c6d3;
+}
+
+.navbar .navbar-nav .nav-link.active{
+	color: #34c6d3;
+}
+
+.navbar-brand {
+	margin-right: 10rem;
+  }
+
+.navtry {
+	font-size:18px!important;	
+}
+
+/*==========================================================================		
+				                     HOME
+========================================================================== */
+
+#home{
+	height: 100%;
+	margin:0;
+}
+
+#home-cover:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#home-cover{
+	height: 100%;
+	background-image: url("../img/images/landing_image.jpg");
+	/*background: rgba(0, 0, 0, 0.5);*/
+}
+
+#home-content-box{
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+#home-content-box-inner{
+	display: table-cell;
+	vertical-align: top;
+	padding-top: 60px;
+	/*text-align: center;*/
+}
+
+#home-heading h3{
+	color: white;
+	font-size: 70px;
+	font-weight: 300;
+	margin: 180px 0px 5px 0px;
+}
+
+#home-heading h3 strong{
+	font-weight: 800;
+}
+
+#home-heading p{
+	color: white;
+	font-size: 25px;
+	font-weight: 300;
+}
+
+.bg {
+	animation:slide 3s ease-in-out infinite alternate;
+	background-image: linear-gradient(90deg, #09f 50%, #6c3 50%);
+	bottom:0;
+	left:-50%;
+	opacity:.4;
+	position:fixed;
+	right:-50%;
+	top:0;
+	z-index:-1;
+	overflow: hidden;
+  }
+  
+.bg2 {
+	animation-direction:alternate-reverse;
+	animation-duration:4s;
+}
+
+.bg3 {
+	animation-duration:5s;
+}
+
+@keyframes slide {
+	0% {
+		transform:translateX(-25%);
+	}
+	100% {
+		transform:translateX(25%);
+	}
+}
+  
+
+/*==========================================================================		
+				                Our approach
+========================================================================== */
+
+.service-item{
+	padding: 20px 0 20px 0;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.service-item-icon i{
+	color: #34c6d3;
+	padding: 5px 0px 5px 0;
+	margin-bottom: 10px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+}
+
+.service-item:hover .service-item-icon i {
+	color: #fff;
+	background-color: #34c6d3;
+}
+
+.service-item-title h3{
+	font-size: 20px;
+	font-weight: 400;
+	margin: 0 0 10px 0;
+}
+
+.service-item-desc p{
+	margin: 0;
+}
+
+.featherlight .featherlight-content {
+	background: #000 !important;
+	color: #fff !important;
+	width: 50%;
+	padding: 40px 40px 10px!important;
+  }
+  
+.featherlight .featherlight-close-icon {
+	background: rgba(255, 255, 255, 0)!important;
+	color: rgb(255, 255, 255)!important;
+}
+
+.robo-explained {
+	display: none;
+	color: #bcbcbc;
+}
+
+html.with-featherlight {
+    overflow: unset;
+}
+
+/*==========================================================================		
+				                     ABOUT
+========================================================================== */
+
+#about-bg-diagonal{
+	background-image: url(../img/images/dashboard_2.PNG);
+    height: 650px;
+    width: 60%;
+    float: right;
+    border-left: 200px solid white;
+    border-top: 650px solid transparent;
+}
+
+#about-content-box{
+	float: left;
+	height: 650px;
+}
+
+#about-content-box-outer{
+	width: 500px;
+	height: 100%;
+	display: table;
+}
+
+#about-content-box-inner{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#about .content-title h3{
+	text-align: center;
+}
+
+#about .content-title-underline{
+	margin: 0 0 30px 0;
+}
+
+#about-desc p{
+	margin-bottom: 30px;
+}
+
+/*==========================================================================		
+				                     MY TEAM
+========================================================================== */
+
+.team-member{
+	margin: 0 15px 0 15px;
+	text-align: center;
+}
+
+.team-member img{
+	max-width: 300px;
+	margin: 0 auto 20px auto;
+}
+
+.quote-name {
+	margin: auto;
+}
+
+
+.team-member blockquote{
+	font-family: Georgia, sans-serif;
+	font-style: italic;
+	color: rgb(0, 0, 0);
+	padding: 6px 50px;
+	position: relative;
+}
+
+.team-member blockquote p{
+	color: rgb(0, 0, 0);
+}
+
+.team-member blockquote::before,.team-member blockquote::after{
+	font-size: 70px;
+	font-style: normal;
+	line-height: 1;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+
+.team-member blockquote::before{
+	content: "\201C";
+	top: 0;
+	left: 30px;
+}
+
+.team-member blockquote::after{
+	content: "\201D";
+	bottom: 0;
+	right: 30px;
+}
+
+.team-member-author p{
+	color:  #143c66;
+	font-size: 17px;
+	letter-spacing: 0.5px;
+}
+
+.team-member-author p strong{
+	display: block;
+}
+
+.team-member-info{
+	padding: 10px 0 30px 0;
+}
+
+h4.team-member-name {
+	color: #143c66;
+	font-size: 22px;
+	font-weight: 700;
+	padding-top: 20px;
+	font-style: italic;
+}
+
+.team-member-designation {
+	font-size: 17px;
+	font-weight: 500;
+	font-style: normal;
+	margin: 10px;
+}
+
+
+/*==========================================================================		
+				             MY RECOMMENDATION
+========================================================================== */
+
+#recommendation-cover{
+	background-image: url("../img/bg-testimonials.jpg");
+}
+
+#recommendations .content-box{
+	background-color: rgba(0,0,0,0.1);
+}
+
+#my-recommendations{
+	padding-top: 10px;
+}
+
+.recommendation img{
+	max-width: 120px;
+	margin: 0 auto 20px auto;
+}
+
+.recommendation blockquote{
+	font-family: Georgia, sans-serif;
+	font-style: italic;
+	color: #fff;
+	padding: 6px 130px;
+	position: relative;
+}
+
+.recommendation blockquote p{
+	color: #fff;
+}
+
+.recommendation blockquote::before,.recommendation blockquote::after{
+	font-size: 70px;
+	font-style: normal;
+	line-height: 1;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+
+.recommendation blockquote::before{
+	content: "\201C";
+	top: 0;
+	left: 100px;
+}
+
+.recommendation blockquote::after{
+	content: "\201D";
+	bottom: 0;
+	right: 100px;
+}
+
+.recommendation-author p{
+	color: #fff;
+	font-size: 17px;
+	letter-spacing: 0.5px;
+}
+
+.recommendation-author p strong{
+	display: block;
+}
+
+/*==========================================================================		
+				             MY PRICINGS
+========================================================================== */
+
+.pricing-box{
+	border: 3px solid #34c6d3;
+	padding: 50px 0;
+	margin: 40px 0;
+}
+
+h4.pricing-title{
+	background-color: #34c6d3;
+	color: #fff;
+	display: inline-block;
+	padding: 7px 15px;
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin: 0 0 30px 0;
+}
+
+h3.pricing-value{
+	font-size: 60px;
+	font-weight: 700;
+}
+
+ul.pricing-spec{
+	list-style: none;
+	padding-left: 0;
+	margin: 20px 0 60px 0;
+}
+
+ul.pricing-spec li p{
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.pricing-box-lg{
+	padding: 90px 0;
+	margin: 0;
+	background-color: #34c6d3;
+}
+
+.pricing-box-lg h4.pricing-title{
+	color: #34c6d3;
+	background-color: #fff;
+}
+
+.pricing-box-lg ul.pricing-spec li p{
+	color: #fff;
+}
+
+/*==========================================================================		
+				             	MY STATS
+========================================================================== */
+
+#stats-cover{
+	background-image: url("../img/bg-stats.jpg");
+}
+
+#stats .content-box{
+	background-color: rgba(0,0,0,0.8);
+}
+
+.stats-item{
+	padding: 50px 0;
+}
+
+.stats-item i{
+	color: #34c6d3;
+}
+
+.stats-item h2{
+	color: #fff;
+	font-size: 35px;
+	font-weight: 700;
+	margin-top: 10px;
+	margin-bottom: 1px;
+}
+
+.stats-item p{
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 300;
+	margin-top: 0;
+}
+
+/*==========================================================================		
+				             		CLIENTS
+========================================================================== */
+
+.client{
+	padding: 20px 0;
+}
+
+#clients .content-box{
+	padding-top: 200px;
+}
+
+
+/*==========================================================================		
+				             		FOOTER
+========================================================================== */
+
+#footer-bottom{
+	background-color: rgba(0,0,0,.5);
+	padding: 20px 0;
+	margin-top: 10px;
+}
+
+#footer-copyrights p{
+	margin: 0;
+	color: #fff;
+}
+
+#footer-menu{
+	float:left;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+#footer-menu ul{
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+#footer-menu li{
+	display: inline-block;
+}
+
+#footer-menu li a{
+	color: #fff;
+	font-size: 16px;
+	font-weight: 300;
+	margin: 0 5px;
+	text-decoration: none;
+}
+
+#footer-menu a:hover {
+	color: #34c6d3;
+}
+
+/*==========================================================================		
+				            SOCIAL ICONS (General)
+========================================================================== */
+
+.social-list{
+	padding-left: 0;
+}
+
+.social-list li{
+	list-style: none;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin-top: 10px;
+}
+
+.social-icon i{
+	font-size: 17px;
+}
+
+.icon-gray{
+	color: #41464b;
+}
+
+.icon-white{
+	color: #fff;
+}
+
+.social-icon i:hover{
+	color: #34c6d3;
+}
+/*==========================================================================		
+				                     PARALLAX (General)
+========================================================================== */
+
+.bg-parallax{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+/*==========================================================================		
+				                     Animate (Home Section)
+========================================================================== */
+
+#home-cover{
+	animation-delay: .2s;
+	animation-duration: .5s;
+}
+
+#home-heading{
+	animation-delay: .7s;
+	animation-duration: .5s;
+}
+
+#home-btn{
+	animation-delay: 1.2s;
+	animation-duration: .5s;
+	margin: 250px 0px 5px 0px;
+	float: left;
+}
+
+/*==========================================================================		
+				                     BUTTONS (General)
+========================================================================== */
+
+.btn-general{
+	border-width: 2px;
+	border-radius: 0;
+	padding: 10px 26px 10px 26px;
+	font-size: 20px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.btn-white{
+	border-color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
+}
+
+.btn-white:hover, .btn-white:focus{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	border: rgb(255, 255, 255);
+}
+
+.btn-blue{
+	border-color: #34c6d3;
+	color: #34c6d3;
+}
+
+.btn-blue:hover, .btn-blue:focus{
+	background-color: #34c6d3;
+	color: #fff;
+	border: #34c6d3;
+}
+
+.btn-back-to-top{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	font-size: 22px;
+	padding: 3px 15px;
+	border-radius: 0;
+	display: none;
+}
+
+/*==========================================================================		
+				                     CONTENT (General)
+========================================================================== */
+
+.content-box{
+	padding: 120px 0 120px 0;
+}
+
+.content-title h3{
+	font-size: 30px;
+	font-weight: 700;
+	text-align: center;
+	margin: 0 0 10px 0;
+}
+
+.content-title-underline{
+	width: 60px;
+	height: 3px;
+	background-color:#34c6d3;
+	margin: 0 auto 30px auto;
+}
+
+.content-title-white h3{
+	color: #fff;
+}
+
+.content-title p{
+	text-align: center;
+	font-size: 20px;
+	font-weight: 300;
+}

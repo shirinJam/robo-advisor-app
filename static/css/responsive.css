@@ -1,3 +1,111 @@
+/*==================================================
+			Bootstrap 4 Media Queries         
+==================================================*/
+
+
+/* Large Devices (Desktops & Laptops) */
+
+@media (min-width: 1200px) {
+  /* OK */
+}
+
+
+/* Medium Devices (Landscape Tablets & Medium Desktops) */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* OK */
+}
+
+
+/* Small Devices (Portrait Tablets & Small Desktops) */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Mobile menu */
+  .navbar {
+      background: rgba(0, 0, 0, .7);
+  }
+  .navbar-nav {
+      float: left;
+  }
+  /* About - remove diagonal border */
+  #about-bg-diagonal {
+      border-left: 0;
+      border-top: 0;
+      width: 100%;
+      height: 350px;
+  }
+  #about-content-box {
+      width: 100%;
+      height: 350px; 
+  }
+}
+
+
+/* Extra Small Devices (Landscape Phones & Portrait Tablets) */
+
+@media (max-width: 767px) {
+  /* Mobile menu */
+  .navbar {
+      background: rgba(0, 0, 0, .7);
+  }
+  .navbar-nav {
+      float: left;
+  }
+  /* About - remove diagonal border */
+  #about-bg-diagonal {
+      border-left: 0;
+      border-top: 0;
+      width: 100%;
+      height: 350px;
+  }
+  #about-content-box {
+      width: 100%;
+      height: 350px; 
+  }
+  /* Home */
+  #home-heading h3 {
+      font-size: 24px;
+  }
+  /* Buttons */
+  .btn-general {
+      padding: 6px 22px 6px 22px;
+      font-size: 14px;
+  }
+  /* Work */
+  .img-wrapper img {
+      min-width: 100%;
+  }
+
+  /* Testimonials */
+  .recommendation blockquote {
+      padding: 6px 50px;
+  }
+  .recommendation blockquote:before {
+      left: 10px;
+  }
+  .recommendation blockquote:after {
+      right: 10px;
+  }
+  .recommendation blockquote p {
+      font-size: 14px;
+  }
+  /* Stats */
+  .stats-item {
+      padding: 20px 0;
+  }
+  /* Footer */
+  #footer-copyrights {
+      text-align: center;
+  }
+}
+
+
+/* Extra Small Devices (Portrait Phones & Smaller devices) */
+
+@media (max-width: 576px) {
+  /* OK */
+}
+
 
 
 @media (max-width: 767px) {
