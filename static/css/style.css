@@ -4,7 +4,12 @@
 
 
 html, body{
-	height: 100%;
+	min-height: 100%;
+  background: url("../img/hero-bg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
@@ -42,89 +47,8 @@ b, strong {
 /*==========================================================================		
 				                        NAVBAR
 ========================================================================== */
-/* 
-.navbar {
-  height: 83px;
-  background-color: #131313!important;
-}
 
-.navbar-nav {
-	padding: 10px 10px;
-}
-
-.button-purple {
-background-color: #b459a3;
-    color: #ffffff;
-    font-size: 0.8em;
-    padding: 10px 15px;
-    border-radius: 50px;
-}
-
-.button-purple:hover {
-  background-color: #de78cb;
-  text-decoration: none;
-  }
-
-.header-links {
-  font-size: 0.8em;
-  margin-left: 2em;
-} */
-
-
-.navbar{
-	transition: all .5s ease-in-out;
-}
-
-.bg-shantanu{
-	background-color: rgba(0,0,0,1);
-	padding: 7px 10px;
-}
-
-.navbar .navbar-nav .nav-link{
-  font-family: 'Roboto Condensed', sans-serif!important;
-	color: #fff;
-	font-size: 15px;
-	text-transform: uppercase;
-	font-weight: 700;
-	letter-spacing: 0.5px;
-}
-
-.navbar .navbar-nav .nav-link:hover, .navbar .navbar-nav .nav-link:focus{
-	background-color: none;
-	color: #34c6d3;
-}
-
-.navbar .navbar-nav .nav-link.active{
-	color: #34c6d3;
-}
-
-.navbar-brand {
-	margin-right: 10rem;
-  }
-
-.navbar .nav-item {
-  margin:auto;
-}
-
-.btn-general{
-  border-width: 2px;
-  border-radius: 0;
-  padding: 10px 26px 10px 26px;
-  font-size: 20px;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.btn-white{
-  border-color: rgb(255, 255, 255);
-  color: rgb(255, 255, 255);
-}
-
-.btn-white:hover, .btn-white:focus{
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  border: rgb(255, 255, 255);
-}
+/* from other template */
   
 /*==========================================================================    
                             INDEX PAGE and OTHER PAGES
@@ -139,7 +63,7 @@ background-color: #b459a3;
 #home-heading{
 	padding : 65px;
   vertical-align: middle;
-  color:#fff;
+  color:#51d8af;
 }
 
 sup {
@@ -172,12 +96,17 @@ sup {
   margin-bottom: 30px;
 }
 
-h1 {
-  color: #fff;
+#home-heading h1 {
+  color: #51d8af;
   font-family: inherit;
   font-weight: 500;
   padding-bottom: 10px;
 }
+
+.name h4 h5 {
+  font-weight: 300;
+}
+
 
 .question_no{
   text-align: right;

@@ -1,565 +1,917 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<!--required meta tags-->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<!--title-->
-	<title>RoboFina Advisors</title>
+  <title>RoboFina Advisors</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-	<!--web icon--> 
+  <!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="../static/img/icon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="../static/img/icon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../static/img/icon/favicon-16x16.png">
 	<link rel="manifest" href="../static/img/icon/site.webmanifest">
 	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="theme-color" content="#ffffff">
 
-	<!-- Deciding google font here-->
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700|Montserrat:300,400,700" rel="stylesheet">
 
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="../static/css/font/css/all.css">
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
 
-	<!-- Bootstrap link-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!--featherlight css-->
+  <link href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 
-	<!-- animate on page-->
-	<link rel="stylesheet" href="../static/css/animate/animate.css">
-
-	<!--Magnific popup-->
-	<link rel="stylesheet" href="../static/css/magnific-popup/magnific-popup.css">
-
-	<!--Owl Carousel-->
-	<link rel="stylesheet" href="../static/css/owl-carousel/owl.carousel.min.css">
-	<link rel="stylesheet" href="../static/css/owl-carousel/owl.theme.default.min.css">
-
-	<!--featherlight css-->
-	<link href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
-
-	<!--style css-->
-	<link rel="stylesheet" href="../static/css/style_index.css">
-
-	<!--responsive css-->
-	<link rel="stylesheet" href="../static/css/responsive.css">
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
 
 </head>
-<body data-spy="scroll" data-target=".navbar-dark" data-offset="65">
 
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-gray fixed-top bg-shantanu">
-			<div class="container">
-				<a class="navbar-brand smooth-scrolling" href="#home">
-					<img src="{{url_for('static', filename='img/robo_advisor_logo.png')}}" alt="Robofina Advisors" height="60" style="margin:auto 10px auto 0px;">
-					<span style="color:white;font-size: 22pt;vertical-align: middle;"><i>RoboFina  Advisors</i></span>
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#shantanu-menu">
-					  	<span class="navbar-toggler-icon"></span>
-					</button>
-				<div id="shantanu-menu" class="collapse navbar-collapse">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#home">Home</a></li>
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#services">Approach</a></li>
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#about">Vision</a></li>
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#team">Team</a></li>
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#recommendations">Recommendation</a></li>
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#pricing">Pricing</a></li>
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#stats">Stats</a></li>
-						<li class="nav-item"><a class="nav-link smooth-scrolling" href="#clients">Clients</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{url_for('contact_us')}}">Contact</a></li>
-						<li class="nav-item" style="width:150px; margin-left:10px;margin-right:30px"><a class="nav-link btn btn-outline-primary btn-lg btn-general btn-white navtry" href="{{url_for('welcome')}}" title="Robo-advisor">GET STARTED!</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
+<body>
 
-	<!--HOME Section-->
-	<section id="home">
-		<div id="home-cover" class="bg-parallax animated zoomIn">
-			<div class="bg"></div>
-			<div class="bg bg2"></div>
-			<div class="bg bg3"></div>	
-			<div id="home-content-box" class="text-center">
-				<div class="container-fluid" id="home-content-box-inner">
-					<div class="row">
-						<div class="col" style="padding: 0px;">
-							<div id="home-heading" class="animated fadeInDown">
-								<h3><strong>Plant your seeds now</strong></h3>
-								<h3 style="margin:7px 10px 5px 0px"><strong>& make your money GROW!</strong></h3>
-								<p style="margin:20px">RoboFina makes sure your planted investment grows and provide you with fruitful returns!</p>
-							</div>
-						</div>
-						<div class="col-4" style="padding: 0px;">
-							<div id="home-btn" class="animated fadeIn">
-								<a class="btn btn-outline-primary btn-lg btn-general btn-white" href="{{url_for('welcome')}}" title="Robo-advisor">Get Started!</a>
-							</div>				
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">robofina.advisors@gmail.com</a>
+        <i class="icofont-phone"></i> +49 176 0000 0000
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div>
+    </div>
+  </div>
 
-	<!--Approach Section-->
-	<section id="services">
-		<div class="content-box">
-			<div class="content-title wow fadeInDown" data-wow-duration="0.5s" data-wow-delay=".5s">
-				<h3>Our approach</h3>
-				<div class="content-title-underline"></div>
-				<p>Our approach is based on leveraging the power of AI and fundamental Finance to keep our investors one step ahead.</p>
-			</div>
-			<div class="container">
-				<div class="row wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="1s">
-					<div class="col-md-6 text-center">
-						<div class="service-item" data-featherlight="#mylightbox">
-							<div class="service-item-icon">
-								<i class="fas fa-balance-scale fa-3x"></i>
-							</div>				
-							<div class="service-item-title">
-								<h3>Principle</h3>
-							</div>
-							<div class="service-item-desc">
-								<p>RoboFina focuses on increasing expected return wihtin appropriate level of risk by
-									balancing emotions with your demographic attributes </p>
-							</div>
-						</div>
-						<div id="mylightbox" class="robo-explained"><h3 style="color:#fff">Principle</h3><br>
-							RoboFina make sure no investor is highly influenced by emotions and at the same time it takes in 
-							account the extend of risk an investor can bear by carefully analyzing his behavior. 
-							Our system takes into account an investors behavior as well as demographic aspects in 
-							order to calculate an appropriate risk tolerance score using sophisticated mathematical models. 
-						</div>
-					</div>
-					<div class="col-md-6 text-center">
-						<div class="service-item" data-featherlight="#mylightbox2">
-							<div class="service-item-icon">
-								<i class="fas fa-list-ul fa-3x"></i>
-							</div>				
-							<div class="service-item-title">
-								<h3>Process</h3>
-							</div>
-							<div class="service-item-desc">
-								<p>RoboFina performs strategic asset allocation based on the leading financial algorithms in the industry</p>
-							</div>
-						</div>
-						<div id="mylightbox2" class="robo-explained"><h3 style="color:#fff">Process</h3><br>
-							Once the risk tolerance of an individual investor is calculated, Robofina performs asset allocation 
-							based on the algorithms inspired from award winning research. 
-							At the same time, Robofina makes sure the investor always stays within his risk tolerance bounds.
-						</div>
-					</div>
-					<div class="col-md text-center">
-						<div class="service-item" data-featherlight="#mylightbox3">
-							<div class="service-item-icon">
-								<i class="fas fa-chart-pie fa-3x"></i>
-							</div>
-							<div class="service-item-title">
-								<h3>Portfolio</h3>
-							</div>
-							<div class="service-item-desc">
-								<p>RoboFina diversifies your portfolio across various ranges of ETFs available worldwide</p>
-							</div>
-						</div>
-						<div id="mylightbox3" class="robo-explained"><h3 style="color:#fff">Portfolio</h3><br>
-							Robofina focuses on passively managed funds i.e. investment in ETFs. We have carefully 
-							handpicked ETF’s that will provide highest level of diversification across many asset 
-							classes, at the same time providing high returns.
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-	<!--Vision Section-->
-	<section id="about">
-		<!--About right side parallax image-->
-		<div id="about-bg-diagonal" class="bg-parallax"></div>
-		<!--Left side text message-->
-		<div class="container" style="margin-left:20px">
-			<div class="row">
-				<div class="col-md-4">
-					<div id="about-content-box">
-						<div id="about-content-box-outer">
-							<div id="about-content-box-inner">
-								<div class="content-title wow fadeInDown" data-wow-duration="0.5s" data-wow-delay=".5s">
-									<h3 style="text-align: left;">Our Vision</h3>
-									<div class="content-title-underline"></div>
-								</div>
-								<div id="about-desc" class="wow fadeInDown">
-									<p>Investing is not difficult and everyone should have equal apportunities to invest. 
-										<strong>RoboFina</strong> strives to make the investment procedure as easy as possible so that 
-										inexperienced investors and beginners can make use of this platform to start 
-										their journey into the investment world. <br><br>
-										
-										We also believe in educating our investors 
-										by giving them uptpdate information about market trends and suggestions and keeping 
-										our processes transparent, so when the time comes our investors are confident enough 
-										to switch to the premium package where they are free to form their own portfolios 
-										based on their knowledge as well as our support an suggestions.</p>
-								</div>
-								<div id="about-button" class="wow fadeInUp">
-									<a class="btn btn-lg btn-general btn-blue" href="{{url_for('welcome')}}" role="button" title="Robo-advisor">Get Started!</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+      <h1 class="logo mr-auto"><a href="#hero">Robo<span>Fina</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt=""></a>-->
 
-	<!--Team Section-->
-	<section id="team">
-		<div class="content-box">
-			<div class="content-title wow fadeInDown" data-wow-duration="0.5s" data-wow-delay=".5s">
-				<h3>Our team</h3>
-				<div class="content-title-underline"></div>
-			</div>
-			<div class="container">
-				<div class="row wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-					<div class="col-md-12">
-						<div id="team-members" class="owl-carousel owl-theme">
-							<div class="row team-member">
-								<div class="col-md-4">
-									<img src="../static/img/my_team/shirin_formal.jpg" class="img-fluid rounded-circle" alt="my team">
-								</div>
-								<div class="col-md-8 quote-name">
-									<blockquote>
-										<p>Through RoboFina, I want to make 
-										   investment opportunities and financial literacy available and affordable to everyone by making 
-											it fun and easy! 
-										</p>
-									</blockquote>
-									<div class="team-member-author">
-										<p>
-											<strong><a href="https://linkedin.com/in/shirin-khosravi-jam" class="social-icon icon-gray"><i class="fab fa-linkedin"></i></a> Shirin Khosravi Jam</strong>
-											<span>RoboFina Advisors</span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#hero">Home</a></li>
+          <li><a href="#services">Approach</a></li>
+          <li><a href="#about">Vision</a></li>
+          <li><a href="#counts">Clients</a></li>
+          <li><a href="#team">Team</a></li>
+          <!-- <li class="drop-down"><a href="">Drop Down</a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="drop-down"><a href="#">Deep Drop Down</a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li> -->
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="{{url_for('welcome')}}" class="btn-get-started">Get Started</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
 
-	<!--Recommendation Section-->
-	<section id="recommendations">
-		<div id="recommendation-cover" class="bg-parallax">
-			<div class="content-box">
-				<div class="content-title content-title-white wow fadeInDown" data-wow-duration="0.5s" data-wow-delay=".5s">
-					<h3>Client Recommendations</h3>
-					<div class="content-title-underline"></div>
-				</div>
-				<div class="container">
-					<div class="row wow bounceInDown" data-wow-duration="0.5s" data-wow-delay="1s">
-						<div class="col-md-12">
-							<div id="my-recommendations" class="text-center owl-carousel owl-theme">
-								<div class="recommendation">
-									<img src="../static/img/my_recommendations/coming_soon.png" class="img-fluid rounded-circle" alt="Recommendations">
-									<blockquote>
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, enim veniam quisquam consectetur libero dolores eos dolorum fuga, quo iste in numquam ab iusto quae et ipsa sapiente porro deleniti!</p>
-									</blockquote>
-									<div class="recommendation-author">
-										<p>
-											<strong>Coming Soon</strong>
-											<span>Position- Coming Soon</span>
-										</p>
-									</div>
-								</div>
-								<div class="recommendation">
-									<img src="../static/img/my_recommendations/coming_soon.png" class="img-fluid rounded-circle" alt="Recommendations">
-									<blockquote>
-										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet doloremque, corporis voluptatibus velit, aut distinctio voluptate suscipit hic minima rerum iure fugiat, nesciunt voluptates esse ducimus sapiente soluta eos nobis.</p>
-									</blockquote>
-									<div class="recommendation-author">
-										<p>
-											<strong>Coming Soon</strong>
-											<span>Position- Coming Soon</span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    </div>
+  </header><!-- End Header -->
 
-	<!--Pricing Section-->
-	<section id="pricing">
-		<div class="content-box">
-			<div class="content-title wow fadeInDown" data-wow-duration="0.5s" data-wow-delay=".5s">
-				<h3>Our Pricing</h3>
-				<div class="content-title-underline"></div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 wow zoomIn" data-wow-duration="0.5s" data-wow-delay="1s">
-						<div class="pricing-box text-center">
-							<h4 class="pricing-title">Premium</h4>
-							<h3 class="pricing-value">00.99<sup>€</sup></h3>
-							<ul class="pricing-spec">
-								<li>
-									<p>Coming Soon</p>
-								</li>
-								<li>
-									<p>Coming Soon</p>
-								</li>
-								<li>
-									<p>.</p>
-								</li>
-								<li>
-									<p>.</p>
-								</li>
-							</ul>
-							<div class="pricing-btn">
-								<a class="btn btn-general btn-lg btn-blue" href="#" role="button">COMING SOON</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 wow bounceInUp" data-wow-duration="0.5s" data-wow-delay="1s">
-						<div class="pricing-box pricing-box-lg text-center">
-							<h4 class="pricing-title">Basic</h4>
-							<h3 class="pricing-value">Free</h3>
-							<ul class="pricing-spec">
-								<li>
-									<p>AI driven Risk Tolerance</p>
-								</li>
-								<li>
-									<p>12 diverse ETFs</p>
-								</li>
-								<li>
-									<p>Intiutive design</p>
-								</li>
-								<li>
-									<p>Unlimited trials</p>
-								</li>
-							</ul>
-							<div class="pricing-btn">
-								<a class="btn btn-general btn-lg btn-white" href="#" role="button">GET STARTED!</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 wow zoomIn" data-wow-duration="0.5s" data-wow-delay="1s">
-						<div class="pricing-box text-center">
-							<h4 class="pricing-title">Standard</h4>
-							<h3 class="pricing-value">00.49<sup>€</sup></h3>
-							<ul class="pricing-spec">
-								<li>
-									<p>Coming Soon</p>
-								</li>
-								<li>
-									<p>Coming Soon</p>
-								</li>
-								<li>
-									<p>.</p>
-								</li>
-								<li>
-									<p>.</p>
-								</li>
-							</ul>
-							<div class="pricing-btn">
-								<a class="btn btn-general btn-lg btn-blue" href="#" role="button">COMING SOON</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  <!-- ======= Landing image section Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <h1>Plant your seeds now & make your money <span>GROW!</spa>
+      </h1>
+      <h2>RoboFina makes sure your planted investments <span class="typed" style="color:#50d8af;" data-typed-items="grows!, provide fruitful returns!, multiplies!"></span></h2>
+      <!-- <h2>RoboFina makes sure your planted investment grows and provide you with fruitful returns!</h2> -->
+      <div class="d-flex">
+        <a href="{{url_for('welcome')}}" class="btn-get-started scrollto">Get Started</a>
+        <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a> -->
+      </div>
+    </div>
+  </section><!-- End Hero -->
 
-	<!--Stats Section-->
-	<section id="stats">
-		<div id="stats-cover" class="bg-parallax">
-			<div class="content-box">
-				<div class="content-title content-title-white wow fadeInDown" data-wow-duration="0.5s" data-wow-delay=".5s">
-					<h3>We Never Stop Improving</h3>
-					<div class="content-title-underline"></div>
-				</div>
-				<div class="container">
-					<div class="row text-center wow bounceInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
-						<div class="col-md-4">
-							<div class="stats-item">
-								<i class="fas fa-star fa-5x"></i>
-								<h2><span class="counter">12</span><span>+</span></h2>
-								<p>Awards</p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="stats-item">
-								<i class="far fa-thumbs-up fa-5x"></i>
-								<h2><span class="counter">6500</span><span>+</span></h2>
-								<p>Likes</p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="stats-item">
-								<i class="fas fa-check-square fa-5x"></i>
-								<h2><span class="counter">2200</span><span>+</span></h2>
-								<p>Recommend</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- ======= Skills Section ======= -->
+<!-- <section id="skills" class="skills">
+  <div class="container" data-aos="fade-up">
 
-	<!--Clients Section-->
-	<section id="clients">
-		<div class="content-box">
-			<div class="content-title wow fadeInDown" data-wow-duration="0.5s" data-wow-delay=".5s">
-				<h3>Clients</h3>
-				<div class="content-title-underline"></div>
-			</div>
-			<div class="container">
-				<div class="row text-center wow bounceInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
-					<div class="col-md-12">
-						<div class="clients owl-carousel owl-theme">
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-							<div class="client">
-								<img src="../static/img/client/logos/logo.png" class="img-fluid" alt="client">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <div class="row skills-content">
 
-	<!-- Contact footer form
-	<footer>
-		<div id="contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div id="contact-left">
-							<h3>SHANTANU LADHWE</h3>
-							<p>I am a <strong>Data Scientist!</strong></p>
-							<div id="contact-info">
-								<address>
-									<strong>Address:</strong>
-									<p>Berlin, Germany</p>
-								</address>
-							
-								<div id="phone-email">
-									<p>
-										<strong>Phone:</strong><span> +49 176 77986088</span><br>
-										<strong>Email:</strong><span> shantanu.ladhwe156@gmail.com</span><br>
-									</p>
-								</div>
-							</div>							
-						</div>
-						<ul class="social-list">
-							<li><a href="#" class="social-icon icon-white"><i class="fab fa-facebook-square"></i></a></li>
-							<li><a href="#" class="social-icon icon-white"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" class="social-icon icon-white"><i class="fab fa-youtube"></i></a></li>
-							<li><a href="#" class="social-icon icon-white"><i class="fab fa-twitter-square"></i></a></li>
-						</ul>	
-					</div>
-					<div class="col-md-6">
-						<div id="contact-right">
-							<h3>Contact Me!</h3>
-							<form action="#">
-								<input type="text" name="full-name" placeholder="Full Name" class="form-control">
-								<input type="text" name="email" placeholder="Email Address" class="form-control">
-								<textarea rows="5" name="message" placeholder="Message..." class="form-control"></textarea>
+      <div class="col-lg-6">
 
-								<div id="send-btn">
-									<a class="btn btn-lg btn-general btn-last" href="#" role="button">SEND</a>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
+        <div class="progress">
+          <span class="skill">HTML <i class="val">100%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
 
-		<div id="footer-bottom">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div id="footer-copyrights">
-							<p>Copyrights &copy; 2021 All Rights Reserved by Shirin Khosravi Jam.</p>
-						</div>
-					</div>
-					<div class="col-md-6 d-none d-lg-block">
-						<div id="footer-menu">
-							<ul>
-								<li><a href="#home" class="smooth-scrolling">Home</a>/</li>
-								<li><a href="#services" class="smooth-scrolling">Approach</a>/</li>
-								<li><a href="#about" class="smooth-scrolling">Vision</a>/</li>
-								<li><a href="#team" class="smooth-scrolling">Team</a>/</li>
-								<li><a href="#recommendations" class="smooth-scrolling">Recommendations</a>/</li>
-								<li><a href="#pricing" class="smooth-scrolling">Pricing</a>/</li>
-								<li><a href="#stats" class="smooth-scrolling">Stats</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="progress">
+          <span class="skill">CSS <i class="val">90%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
 
-		<a href="#home" id="back-to-top" class="btn btn-sm btn-general btn-blue btn-back-to-top smooth-scrolling" title="home" role="button">
-			<i class="fas fa-arrow-up"></i>
-		</a>
-	</footer>
+        <div class="progress">
+          <span class="skill">JavaScript <i class="val">75%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-6">
+
+        <div class="progress">
+          <span class="skill">PHP <i class="val">80%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="progress">
+          <span class="skill">WordPress/CMS <i class="val">90%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="progress">
+          <span class="skill">Photoshop <i class="val">55%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>x
+</section> -->
+<!-- End Skills Section -->
 
 
-	<!-- Bootstrap javascript -->
-	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  	crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="services">
+    <div class="container" data-aos="fade-up">
 
+      <div class="section-title">
+        <h2>Approach</h2>
+        <h3>Our <span>Approach</span></h3>
+        <p>Our approach is based on leveraging the power of AI and fundamental Finance to keep our investors one step ahead.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
+          <div class="icon-box">
+            <div data-featherlight="#mylightbox">
+              <div class="icon"><i class='bx bx-dna'></i></div>
+              <h4><a href="">Principle</a></h4>
+            </div>
+            <p>RoboFina focuses on increasing expected return wihtin appropriate level of risk by
+              balancing emotions with your demographic attributes </p>
+          </div>
+        </div>
+        <div id="mylightbox" class="robo-explained"><h3>Principle</h3>
+          <p>RoboFina make sure no investor is highly influenced by emotions and at the same time it takes in 
+          account the extend of risk an investor can bear by carefully analyzing his behavior. 
+          Our system takes into account an investors behavior as well as demographic aspects in 
+          order to calculate an appropriate risk tolerance score using sophisticated mathematical models. </p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box">
+            <div data-featherlight="#mylightbox2">
+              <div class="icon"><i class='bx bx-list-ul'></i></div>
+              <h4><a href="">Process</a></h4>
+            </div>
+            <p>RoboFina performs strategic asset allocation based on the leading financial algorithms in the industry</p>
+          </div>
+        </div>
+        <div id="mylightbox2" class="robo-explained"><h3>Process</h3>
+          <p>Once the risk tolerance of an individual investor is calculated, Robofina performs asset allocation 
+            based on the algorithms inspired from award winning research. 
+            At the same time, Robofina makes sure the investor always stays within his risk tolerance bounds.</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon-box">
+            <div data-featherlight="#mylightbox3">
+              <div class="icon"><i class='bx bxs-pie-chart-alt-2'></i></div>
+              <h4><a href="">Portfolio</a></h4>
+            </div>
+            <p>RoboFina diversifies your portfolio across various ranges of ETFs available worldwide</p>
+          </div>
+        </div>
+        <div id="mylightbox3" class="robo-explained"><h3>Portfolio</h3>
+          <p>Robofina focuses on passively managed funds i.e. investment in ETFs. We have carefully 
+            handpicked ETF’s that will provide highest level of diversification across many asset 
+            classes, at the same time providing high returns.</p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Vision</h2>
+        <h3>Our <span>Vision</span></h3>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="100">
+          <img src="../static/img/landing_page/vision_dashboard.jpg" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+    
+          <p class="font-italic">
+            Investing is not difficult and everyone should have equal apportunities to invest. 
+            <strong><span style="color:#0c2e8a;">Robo</span><span style="color:#50d8af;">Fina</span></strong> strives to make the investment procedure as easy as possible so that 
+            inexperienced investors and beginners can make use of this platform to start 
+            their journey into the investment world. <br><br>
+            
+            We also believe in educating our investors 
+            by giving them uptpdate information about market trends and suggestions and keeping 
+            our processes transparent, so when the time comes our investors are confident enough 
+            to switch to the premium package where they are free to form their own portfolios 
+            based on their knowledge as well as our support an suggestions.
+          </p>
+          <div class="btn-wrap">
+            <a href="{{url_for('welcome')}}" class="btn-get-started">Get Started</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- End About Section -->
+
+    
+  <!-- ======= Counts and client Section ======= -->
+  <section id="counts" class="counts">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Clients</h2>
+        <h3>Our <span>Clients and Testimonials</span></h3>
+        <p>As RoboFina is spreading its wings, the numbers are increasing daily!</p>
+      </div>
+
+      <div class="row" style="margin-top:60px">
+
+        <div class="col-lg-4 col-md-6">
+          <div class="count-box">
+            <i class="icofont-simple-smile"></i>
+            <span data-toggle="counter-up">21</span>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+          <div class="count-box">
+            <i class="icofont-document-folder"></i>
+            <span data-toggle="counter-up">9</span>
+            <p>Projects</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <i class="icofont-live-support"></i>
+            <span data-toggle="counter-up">276</span>
+            <p>Hours Of Support</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Counts Section -->
+
+  <!-- ======= Clients Section ======= -->
+  <section id="clients" class="clients">
+    <div class="container" data-aos="zoom-in">
+
+      <div class="row">
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="../static/img/landing_page/clients/coming_soon.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="../static/img/landing_page/clients/coming_soon.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="../static/img/landing_page/clients/coming_soon.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="../static/img/landing_page/clients/coming_soon.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="../static/img/landing_page/clients/coming_soon.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="../static/img/landing_page/clients/coming_soon.png" class="img-fluid" alt="">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Clients Section -->
+
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials">
+    <div class="container" data-aos="zoom-in">
+
+      <div class="owl-carousel testimonials-carousel">
+
+        <div class="testimonial-item">
+          <img src="../static/img/landing_page/testimonials/coming_soon.png" class="testimonial-img" alt="">
+          <h3>Coming Soon</h3>
+          <h4>Ceo &amp; Founder</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+
+        <div class="testimonial-item">
+          <img src="../static/img/landing_page/testimonials/coming_soon.png" class="testimonial-img" alt="">
+          <h3>Coming Soon</h3>
+          <h4>Designer</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+
+        <div class="testimonial-item">
+          <img src="../static/img/landing_page/testimonials/coming_soon.png" class="testimonial-img" alt="">
+          <h3>Coming Soon</h3>
+          <h4>Store Owner</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+
+        <div class="testimonial-item">
+          <img src="../static/img/landing_page/testimonials/coming_soon.png" class="testimonial-img" alt="">
+          <h3>Coming Soon</h3>
+          <h4>Freelancer</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+
+        <div class="testimonial-item">
+          <img src="../static/img/landing_page/testimonials/coming_soon.png" class="testimonial-img" alt="">
+          <h3>Coming Soon</h3>
+          <h4>Entrepreneur</h4>
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Testimonials Section -->
+
+  <!-- ======= Portfolio Section ======= -->
+  <!-- <section id="portfolio" class="portfolio">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <h3>Check our <span>Portfolio</span></h3>
+        <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+      </div>
+
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-card">Card</li>
+            <li data-filter=".filter-web">Web</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="../static/img/landing_page/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>App 1</h4>
+            <p>App</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="../static/img/landing_page/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Web 3</h4>
+            <p>Web</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="../static/img/landing_page/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>App 2</h4>
+            <p>App</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="../static/img/landing_page/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Card 2</h4>
+            <p>Card</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="../static/img/landing_page/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Web 2</h4>
+            <p>Web</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="../static/img/landing_page/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>App 3</h4>
+            <p>App</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="../static/img/landing_page/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Card 1</h4>
+            <p>Card</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="../static/img/landing_page/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Card 3</h4>
+            <p>Card</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="../static/img/landing_page/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Web 3</h4>
+            <p>Web</p>
+            <a href="../static/img/landing_page/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section> -->
+  <!-- End Portfolio Section -->
+
+  <!-- ======= Team Section ======= -->
+  <section id="team" class="team section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Team</h2>
+        <h3>Our <span>Team</span></h3>
+        <!-- <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="member">
+            <div class="member-img">
+              <img src="../static/img/landing_page/team/shirin_formal.jpg" class="img-fluid" alt="">
+              <div class="social">
+                <a href=""><i class="icofont-twitter"></i></a>
+                <a href=""><i class="icofont-facebook"></i></a>
+                <a href=""><i class="icofont-instagram"></i></a>
+                <a href="https://linkedin.com/in/shirin-khosravi-jam"><i class="icofont-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>Shirin Khosravi Jam</h4>
+              <span>RoboFina Advisors</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-8 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+          <div class="quote-name">
+            <blockquote>
+              <p>Through RoboFina, I want to make 
+                 investment opportunities and financial literacy available and affordable to everyone by making 
+                it fun and easy! 
+              </p>
+            </blockquote>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Team Section -->
+
+  <!-- ======= Pricing Section ======= -->
+  <section id="pricing" class="pricing">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Pricing</h2>
+        <h3>Our <span>Pricing</span></h3>
+        <!-- <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
+      </div>
+
+      <div class="row" style="margin-top:50px;">
+
+        <div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="box featured">
+            <h3>Free</h3>
+            <h4><sup>€</sup>0<span> / month</span></h4>
+            <ul>
+              <li>AI driven Risk Tolerance</li>
+              <li>12 diverse ETFs</li>
+              <li>Intiutive design</li>
+              <li class="na">Unlimited trials</li>
+              <li class="na">Unlimited ETFs</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="{{url_for('welcome')}}" class="btn-buy">Get Started</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+          <div class="box">
+            <h3>Premium</h3>
+            <h4><sup>€</sup>0.49<span> / month</span></h4>
+            <ul>
+              <li>AI driven Risk Tolerance</li>
+              <li>12 diverse ETFs</li>
+              <li>Intiutive design</li>
+              <li>Unlimited trials</li>
+              <li class="na">Unlimited ETFs</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy" style="pointer-events: none;">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+          <div class="box">
+            <span class="advanced">Advanced</span>
+            <h3>Ultimate</h3>
+            <h4><sup>€</sup>0.99<span> / month</span></h4>
+            <ul>
+              <li>AI driven Risk Tolerance</li>
+              <li>12 diverse ETFs</li>
+              <li>Intiutive design</li>
+              <li >Unlimited trials</li>
+              <li>Unlimited ETFs</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy" style="pointer-events: none;">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Pricing Section -->
+
+  <!-- ======= Frequently Asked Questions Section ======= -->
+  <section id="faq" class="faq section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title" style="margin-bottom:50px;">
+        <h2>F.A.Q</h2>
+        <h3>Frequently Asked <span>Questions</span></h3>
+        <!-- <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
+      </div>
+
+      <ul class="faq-list" data-aos="fade-up" data-aos-delay="100">
+
+        <li>
+          <a data-toggle="collapse" class="" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="icofont-simple-up"></i></a>
+          <div id="faq1" class="collapse show" data-parent=".faq-list">
+            <p>
+              Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <a data-toggle="collapse" href="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="icofont-simple-up"></i></a>
+          <div id="faq2" class="collapse" data-parent=".faq-list">
+            <p>
+              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <a data-toggle="collapse" href="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="icofont-simple-up"></i></a>
+          <div id="faq3" class="collapse" data-parent=".faq-list">
+            <p>
+              Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <a data-toggle="collapse" href="#faq4" class="collapsed">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="icofont-simple-up"></i></a>
+          <div id="faq4" class="collapse" data-parent=".faq-list">
+            <p>
+              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <a data-toggle="collapse" href="#faq5" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="icofont-simple-up"></i></a>
+          <div id="faq5" class="collapse" data-parent=".faq-list">
+            <p>
+              Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <a data-toggle="collapse" href="#faq6" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="icofont-simple-up"></i></a>
+          <div id="faq6" class="collapse" data-parent=".faq-list">
+            <p>
+              Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+            </p>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </section>
+  <!-- End Frequently Asked Questions Section -->
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <h3>Contact<span> Us</span></h3>
+        <p>Feel free to contact us!</p>
+      </div>
+
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-6">
+          <div class="info-box mb-4">
+            <i class="bx bx-map"></i>
+            <h3>Our Address</h3>
+            <p>OVGU, Magdeburg 39106, Germany</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-envelope"></i>
+            <h3>Email Us</h3>
+            <p>robofina.advisors@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-phone-call"></i>
+            <h3>Call Us</h3>
+            <p>+49 176 0000 0000</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="col-lg-6 ">
+          <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAue81g2nihQy70Tazps6-8gheFJAAdLO8
+          &q=Otto+von+Guericke+University+Magdeburg&zoom=14" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+        </div>
+
+        <div class="col-lg-6">
+          <form class="form-group contact_submit" id="contact_form" autocomplete="off" action="{{ url_for('contact_us') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="form-row">
+              <div class="col form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validate"></div>
+              </div>
+              <div class="col form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validate"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              <div class="validate"></div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+              <div class="validate"></div>
+            </div>
+            <div class="mb-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Our newsletter with latest Finance and technology news coming soon!</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe" disabled>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Robo<span>Fina</span></h3>
+            <p>
+              Otto von Guericke University <br>
+              Magdeburg, 39106<br>
+              Germany <br><br>
+              <strong>Phone:</strong> +49 176 0000 0000<br>
+              <strong>Email:</strong> robofina.advisors@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Approach</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">Vision</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Risk Assessment</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Portfolio Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Financial Services</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>We are coming soon on social media. Stay Tuned!</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Shirin Khosravi Jam</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits" style="display:none;">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../static/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../static/assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
 	<!-- Featherlight Popup -->
 	<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 
-	<!--WOW for animation-->
-	<script src="../static/js/wow/wow.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
 
-	<!--Magnific popup-->
-	<script src="../static/js/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-	<!--Owl Carousel-->
-	<script src="../static/js/owl-carousel/owl.carousel.min.js"></script>	
-
-	<!--Counter-->
-	<script src="../static/js/counter/jquery.waypoints.min.js"></script>
-	<script src="../static/js/counter/jquery.counterup.min.js"></script>
-
-	<!--easing-->
-	<script src="../static/js/easing/jquery.easing.1.3.js"></script>
-
-	<!--custome JS-->
-	<script src="../static/js/custom_index.js"></script>
 </body>
+
 </html>

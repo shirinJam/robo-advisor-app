@@ -19,7 +19,8 @@ import os
 import re
 import sklearn
 import pickle
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request,\
+    redirect, url_for, session, flash,jsonify
 from datetime import datetime
 import yfinance as yf
 import scipy.optimize as optimize
@@ -28,6 +29,8 @@ from dateutil.relativedelta import relativedelta
 from email_validator import validate_email
 from flask_mail import Mail, Message
 import textwrap
+# using Flask-WTF CSRF protection for AJAX requests
+from flask_wtf.csrf import CSRFProtect
 # from dotenv import load_dotenv
 
 # defining base directory as per the location of app.py file
@@ -43,6 +46,9 @@ app = Flask(__name__)
 
 # initiating the mail application for this flask
 mail= Mail(app)
+
+# protecting our app 
+csrf = CSRFProtect(app)
 
 ######################################################################
                         # DEFINING IMP VARIABLES
@@ -622,11 +628,13 @@ def contact_us():
         if request.method == 'POST':
                 
             # fetching name
-            name = request.form['txtName']
+            name = request.form['name']
             # fetching email
-            email = request.form['txtEmail']
+            email = request.form['email']
+            # fetching subject
+            subject = request.form['subject']
             # fetching message
-            message = request.form['txtMsg']
+            message = request.form['message']
             
             try:
                 valid_email = validate_email(email)
@@ -641,9 +649,11 @@ def contact_us():
                 body_txt = """
                             From: %s <%s>
                             
+                            Subject: %s
+                            
                             %s
                             
-                            """ % (name, email, message)
+                            """ % (name, email, subject, message)
                 msg.body = textwrap.dedent(body_txt)
                 mail.send(msg)
                 
@@ -665,21 +675,13 @@ def contact_us():
                 msg.body = textwrap.dedent(body_txt)
                 mail.send(msg)
                 
-                flash('Message has been submitted successfully','success')
-                return redirect(url_for('contact_us'))
+                return jsonify({'success':'OK'})
             
-            else:
-                
-                flash('Please enter correct email details!','error')
-                return redirect(url_for('contact_us'))  
-
-        else:
-            return render_template('contact_us.html')
+            else:    
+                return jsonify({'error':'Error! Enter correct details or try again later!'}) 
 
     except:
-        flash('Something went wrong, please try again later!','error')
-        return redirect(url_for('contact_us'))  
-
+        return jsonify({'error':'Error! Enter correct details or try again later!'})
 
 # defining route function for healthcheck
 @app.route('/healthcheck', methods=['GET'])
@@ -696,4 +698,4 @@ def not_found(e):
 
 # running above python script
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=True)
