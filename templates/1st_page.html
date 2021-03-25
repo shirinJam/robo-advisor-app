@@ -2,179 +2,173 @@
 
 {% block content %}
 
-<div id="home-content-box" class="text-left">
-	<div id="home-heading">
-		<h1> <img style="vertical-align: text-top; margin-left: 30px; margin-right: 10px; padding-bottom:12px;" src="/static/img/robo_advisor_logo_2.png" height="50">Risk Assessment</h1>
-	</div>
-</div>
+<section id="welcome" class="welcome section-bg page_1">
+	<div class="container" data-aos="fade-up">
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			<!--main section-->
-			<div class="container robo">
-				<div class="row">
-					<div style="width:100%;margin:auto">
-						<div class="wrapper">
-							<form class="form-group question_first_page" id="question_form" autocomplete="off" action="{{ url_for('adv_quest2') }}" method="POST">
-
-								<!-- This is for Question No. 1 -->
-								<div class="question_no">
-									(1 of 15)<hr class="question-divider">
-								</div>
-								<label for="age_q" style="color: white;"><strong>Q. Please enter your age below:</strong></label>
-								<input id="age_q" type="number" min="18" max= "105" name="age_q" class="form-control" placeholder="Please enter your age *" required="required" style="max-width: 242px;margin: 10px 0px 25px 20px;">
-
-								<!-- This is for Question No. 2 -->
-								<div class="question_no">
-									(2 of 15)<hr class="question-divider">
-								</div>
-								<label class="control-label"><strong>Q. What is your Net Worth?</strong></label>
-								<!-- For slice type selection radio buttons -->
-								<div class="filter">
-									<label class="filter__label">
-										<input type="text" name="net_income1" class="filter__input slider1">
-									</label>  
-
-									<label class="filter__label">
-										<input type="text" name="net_income2" class="filter__input slider1">
-									</label>
-									<div id="sliderPrice1" class="filter__slider-price" data-min="0" data-max="1000000" data-step="500"></div>
-								</div>
-
-								<!-- This is for Question No. 3 -->
-								<div class="question_no">
-									(3 of 15)<hr class="question-divider">
-								</div>
-								<label class="control-label"><strong>Q. What is your salary per annum?</strong></label>
-								<!-- For slice type selection radio buttons -->
-								<div class="filter">
-									<label class="filter__label">
-										<input name="salary1" type="text" class="filter__input slider2">
-									</label>  
-									<label class="filter__label">
-										<input name="salary2" type="text" class="filter__input slider2">
-									</label>
-									<div id="sliderPrice2" class="filter__slider-price" data-min="0" data-max="1000000" data-step="500"></div>
-								</div>
+		<div class="section-title">
+			<h2>Risk Assessment</h2>
+			<h3>Risk Assessment <span>Part 1</span></h3>
+		</div>
 
 
-								<!-- This is for Question No. 4 -->
-								<div class="question_no">
-									(4 of 15)<hr class="question-divider">
-								</div>
-								<label class="control-label"><strong>Q. What is your highest education?</strong></label>
-								<!-- For slice type selection radio buttons -->
-								<div class="type_options">
-									<div class="md-radio">
-										<input id="no_edu" type="radio" name="education" value="1">
-										<label for="no_edu">No high school degree</label>
-									</div>
-									<div class="md-radio">
-										<input id="high_edu" type="radio" name="education" value="2"> 
-										<label for="high_edu">High school degree</label>
-									</div>
-									<div class="md-radio">
-										<input id="bach_edu" type="radio" name="education" value="3">
-										<label for="bach_edu">Bachelor’s degree</label>
-									</div>
-									<div class="md-radio">
-										<input id="mast_edu" type="radio" name="education" value="4">
-										<label for="mast_edu">Master’s or higher</label>
-									</div>
-									<div id="valid_education" style="color: red;"></div>
-								</div>
+		<!--main section-->
+		<div class="container robo">
+			<div class="wrapper question_page">
+				<form class="form-group question_first_page" id="question_form" autocomplete="off" action="{{ url_for('adv_quest2') }}" method="POST">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>	
+					<!-- This is for Question No. 1 -->
+					<div class="question_no">
+						(1 of 15)<hr class="question-divider">
+					</div>
+					<label for="age_q" style="color: white;"><h5>Q. Please enter your age below:</h5></label>
+					<input id="age_q" type="number" min="18" max= "105" name="age_q" class="form-control" placeholder="Please enter your age *" required="required" style="max-width: 250px;margin: 10px 0px 25px 20px;">
 
-								<!-- This is for Question No. 5 -->
-								<div class="question_no">
-									(5 of 15)<hr class="question-divider">
-								</div>
-								<label class="control-label"><strong>Q. What is your marital status?</strong></label>
-								<!-- For slice type selection radio buttons -->
-								<div class="type_options">
-									<div class="md-radio">
-										<input id="marriage_yes" type="radio" name="marriage" value="1"> 
-										<label for="marriage_yes">Married</label>
-									</div>
-									<div class="md-radio">
-										<input id="marriage_no" type="radio" name="marriage" value="2">
-										<label for="marriage_no">Not Married</label>
-									</div>
-									<div id="valid_marriage" style="color: red;"></div>
-								</div>
+					<!-- This is for Question No. 2 -->
+					<div class="question_no">
+						(2 of 15)<hr class="question-divider">
+					</div>
+					<label class="control-label"><h5>Q. What is your Net Worth?</h5></label>
+					<!-- For slice type selection radio buttons -->
+					<small id="emailHelp" class="form-text text-muted">If you need help with currency conversion, please <span data-featherlight="#mylightbox4" data-featherlight-persist="true"><a href="">click here!</a></span></small>
+					<div class="filter">
+						<label class="filter__label">
+							<input type="text" name="net_income1" class="filter__input slider1 options">
+						</label>  
 
-								<!-- This is for Question No. 6 -->
-								<div class="question_no">
-									(6 of 15)<hr class="question-divider">
-								</div>
-								<label class="control-label"><strong>Q. How many 
-									<span class="field_explained">children<span class="field_explained_text">
-									children including natural children/step-children/
-									foster children of head/spouse/partnerr</span></span> 
-									do you have?</strong></label>
-								<input id="children" type="number" min="0" max="10" name="children" value="0" class="form-control" placeholder="Please enter no. of children*" required="required" style="max-width: 242px;margin: 10px 0px 25px 20px;">
+						<label class="filter__label">
+							<input type="text" name="net_income2" class="filter__input slider1 options">
+						</label>
+						<div id="sliderPrice1" class="filter__slider-price" data-min="0" data-max="1000000" data-step="500"></div>
+					</div>
+
+					<!-- This is for Question No. 3 -->
+					<div class="question_no">
+						(3 of 15)<hr class="question-divider">
+					</div>
+					<label class="control-label"><h5>Q. What is your salary per annum?</h5></label>
+					<!-- For slice type selection radio buttons -->
+					<div class="filter">
+						<label class="filter__label">
+							<input name="salary1" type="text" class="filter__input slider2 options">
+						</label>  
+						<label class="filter__label">
+							<input name="salary2" type="text" class="filter__input slider2 options">
+						</label>
+						<div id="sliderPrice2" class="filter__slider-price" data-min="0" data-max="1000000" data-step="500"></div>
+					</div>
 
 
-								<!-- This is for Question No. 7 -->
-								<div class="question_no">
-									(7 of 15)<hr class="question-divider">
-								</div>
-								<label class="control-label"><strong>Q. What is your working status currently?</strong></label>
-								<!-- For slice type selection radio buttons -->
-								<div class="type_options">
-									<div class="md-radio">
-										<input id="work_emp" type="radio" name="work" value="1">
-										<label for="work_emp">Employed</label>
-									</div>
-									<div class="md-radio">
-										<input id="work_self" type="radio" name="work" value="2"> 
-										<label for="work_self">Self Employed/Partnership</label>
-									</div>
-									<div class="md-radio">
-										<input id="work_ret" type="radio" name="work" value="3">
-										<label for="work_ret">Retired/Student/Disabled</label>
-									</div>
-									<div class="md-radio">
-										<input id="work_unemp" type="radio" name="work" value="4">
-										<label for="work_unemp">Unemployed</label>
-									</div>
-									<div id="valid_work" style="color: red;"></div>
-								</div>
-
-								<div class="alert alert-danger alert-dismissible fade show" id="warning" style="display: none;">
-									<strong>Attention!</strong>  Please answer all the above questions
-								</div>
-
-								<div class="quest-submit">
-									<!--<input type="submit" class="btn btn-primary btn-sm sub_btn" value="Export">-->
-									<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
-									<img src="/static/img/enter.svg" alt="Robzee" title="Next" height="20"> NEXT</button>
-								</div>
-							</form>
+					<!-- This is for Question No. 4 -->
+					<div class="question_no">
+						(4 of 15)<hr class="question-divider">
+					</div>
+					<label class="control-label"><h5>Q. What is your highest education?</h5></label>
+					<!-- For slice type selection radio buttons -->
+					<div class="type_options">
+						<div class="md-radio">
+							<input id="no_edu" type="radio" name="education" value="1">
+							<label class="options" for="no_edu">No high school degree</label>
 						</div>
+						<div class="md-radio">
+							<input id="high_edu" type="radio" name="education" value="2"> 
+							<label class="options" for="high_edu">High school degree</label>
+						</div>
+						<div class="md-radio">
+							<input id="bach_edu" type="radio" name="education" value="3">
+							<label class="options" for="bach_edu">Bachelor’s degree</label>
+						</div>
+						<div class="md-radio">
+							<input id="mast_edu" type="radio" name="education" value="4">
+							<label class="options" for="mast_edu">Master’s or higher</label>
+						</div>
+						<div class="validations" id="valid_education" style="color: red;"></div>
 					</div>
-				</div>
-			</div>
-		</div>
 
-		<div class="col-3" style="min-width:350px">
-			<div class="container currency", style="margin-top:50px; position:fixed;">
-				<h2 class="title">Currency Converter</h1>
-				<form class="currency_converter">
-					<input type="text" id="amount">
-					<select name="" id="from" style="font-size:15px; font-weight: 600; text-align: center;">
-					</select>
-					<select name="" id="to" style="font-size:15px; font-weight: 600; text-align: center;">
-					</select>
-					<input type="submit" id="converter" value="Convert" style="font-size:16px; font-weight: 700; text-align: center;">
-				</form>
-				<div class="results">
-					<div id="result">
+					<!-- This is for Question No. 5 -->
+					<div class="question_no">
+						(5 of 15)<hr class="question-divider">
 					</div>
-					<input id="symbol" type="text" value="EUR" style="font-size:15px; font-weight: 600; text-align: center; color: rgb(255, 255, 255);" disabled>
-				</div>            
+					<label class="control-label"><h5>Q. What is your marital status?</h5></label>
+					<!-- For slice type selection radio buttons -->
+					<div class="type_options">
+						<div class="md-radio">
+							<input id="marriage_yes" type="radio" name="marriage" value="1"> 
+							<label class="options" for="marriage_yes">Married</label>
+						</div>
+						<div class="md-radio">
+							<input id="marriage_no" type="radio" name="marriage" value="2">
+							<label class="options" for="marriage_no">Not Married</label>
+						</div>
+						<div class="validations" id="valid_marriage" style="color: red;"></div>
+					</div>
+
+					<!-- This is for Question No. 6 -->
+					<div class="question_no">
+						(6 of 15)<hr class="question-divider">
+					</div>
+					<label class="control-label"><h5>Q. How many 
+						<span class="field_explained">children<span class="field_explained_text">
+						children including natural children/step-children/
+						foster children of head/spouse/partnerr</span></span> 
+						do you have?</h5></label>
+					<input id="children" type="number" min="0" max="10" name="children" value="0" class="form-control" placeholder="Please enter no. of children*" required="required" style="max-width: 242px;margin: 10px 0px 25px 20px;">
+
+
+					<!-- This is for Question No. 7 -->
+					<div class="question_no">
+						(7 of 15)<hr class="question-divider">
+					</div>
+					<label class="control-label"><h5>Q. What is your working status currently?</h5></label>
+					<!-- For slice type selection radio buttons -->
+					<div class="type_options">
+						<div class="md-radio">
+							<input id="work_emp" type="radio" name="work" value="1">
+							<label class="options" for="work_emp">Employed</label>
+						</div>
+						<div class="md-radio">
+							<input id="work_self" type="radio" name="work" value="2"> 
+							<label class="options" for="work_self">Self Employed/Partnership</label>
+						</div>
+						<div class="md-radio">
+							<input id="work_ret" type="radio" name="work" value="3">
+							<label class="options" for="work_ret">Retired/Student/Disabled</label>
+						</div>
+						<div class="md-radio">
+							<input id="work_unemp" type="radio" name="work" value="4">
+							<label class="options" for="work_unemp">Unemployed</label>
+						</div>
+						<div class="validations" id="valid_work" style="color: red;"></div>
+					</div>
+
+					<div class="alert alert-danger alert-dismissible fade show" id="warning" style="display: none;">
+						<h5>Attention!</h5> <p>Please answer all the above questions</p>
+					</div>
+
+					<div class="quest-submit">
+						<button type="submit" class="btn-get-started sub_btn" value="Next">
+						<img src="/static/img/enter.svg" alt="RoboFina" title="Next" height="20"> NEXT</button>
+					</div>
+				</form>
 			</div>
 		</div>
+	</div>
+</section>
+
+<div id="mylightbox4" class="robo-explained"><h3>Currency Converter</h3>
+	<div class="container currency">
+		<form class="currency_converter" autocomplete="off">
+			<input type="text" id="amount">
+			<select name="" id="from">
+			</select>
+			<select name="" id="to">
+			</select>
+			<input class="btn-get-started" type="submit" id="converter" value="Convert">
+		</form>
+		<div class="results">
+			<div id="result">
+			</div>
+			<input class="btn-get-started" id="symbol" type="text" value="EUR" disabled>
+		</div>            
 	</div>
 </div>
 

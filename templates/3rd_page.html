@@ -2,43 +2,38 @@
 
 {% block content %}
 
-<div id="home-content-box" class="text-left">
-	<div id="home-heading">
-		<h1> <img style="vertical-align: text-top; margin-left: 30px; margin-right: 10px; padding-bottom:12px;" src="/static/img/robo_advisor_logo_2.png" height="50">Risk Assessment</h1>
-	</div>
-</div>
+<section id="welcome" class="welcome section-bg page_3">
+	<div class="container" data-aos="fade-up">
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-9">
-			<!--main section-->
-			<div class="container robo">
-				<div class="row">
-					<div style="width:100%;margin:auto">
-						<div class="wrapper advance">
-							<form class="form-group adv_questions" id="question_form" autocomplete="off" action="{{ url_for('portfolio') }}" method="POST">
-
-								<!-- This is for Question on Investment -->
-								<div class="question_no">
-									16<hr class="question-divider">
-								</div>
-								<label for="investment_amt" style="color: white;"><strong>Q. Amount you want to 
-									<span class="field_explained">invest<span class="field_explained_text">please note you can only proceed with a minimum amount of 5000$ and maximum amount of 100,000$</span></span>?</strong></label>
-								<input id="investment_amt" type="number" min="5000" max="100000" name="investment_amt" class="form-control" placeholder="Please enter investment amount *" required="required" style="max-width: 400px;margin: 10px 0px 25px 20px;">
+		<div class="section-title">
+			<h2>Risk Assessment</h2>
+			<h3>Amount <span>Investment</span></h3>
+		</div>
 
 
-								<div class="quest-submit">
-								<!--<input type="submit" class="btn btn-primary btn-sm sub_btn" value="Export">-->
-								<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
-								<img src="/static/img/enter.svg" alt="Plottu" title="Next" height="20"> NEXT</button></div>
-							</form>
-						</div>
+		<!--main section-->
+		<div class="container robo">
+			<div class="wrapper question_page">
+				<form class="form-group adv_questions" id="question_form" autocomplete="off" action="{{ url_for('portfolio') }}" method="POST">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>	
+
+					<!-- This is for Question on Investment -->
+					<div class="question_no">
+						16<hr class="question-divider">
 					</div>
-				</div>
+					<label for="investment_amt" style="color: white;"><h5>Q. Amount you want to 
+						<span class="field_explained">invest<span class="field_explained_text">please note you can only proceed with a minimum amount of 5000$ and maximum amount of 100,000$</span></span>?</h5></label>
+					<input id="investment_amt" type="number" min="5000" max="100000" name="investment_amt" class="form-control" placeholder="Please enter investment amount *" required="required" style="max-width: 250px">
+
+
+					<div class="quest-submit">
+						<button type="submit" class="btn-get-started sub_btn" value="Next">
+					<img src="/static/img/enter.svg" alt="Plottu" title="Next" height="20"> NEXT</button></div>
+				</form>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 <script type="text/javascript">
 	window.onbeforeunload = function() {

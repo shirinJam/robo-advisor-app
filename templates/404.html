@@ -2,31 +2,25 @@
 
 {% block content %}
 
-<div id="home-content-box" class="text-left">
-	<div id="home-heading">
-		<h1>Page not found!</h1>
-	</div>
-</div>
+<section id="welcome" class="welcome section-bg error_page">
+	<div class="container" data-aos="fade-up">
 
-<!-- for 404 error page -->
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-9">
-			<!--main section-->
-			<div class="container robo">
-				<div class="row">
-					<div style="width:100%;margin:auto">
-						<div class="wrapper advance">
-                            <h1>Page Not Found!</h1>
-                            <div id="error_page">
-                                <p>Go back <a href="{{ url_for('index') }}">Home!</a></p>
-                            </div>
-						</div>
-					</div>
+		<div class="section-title">
+			<h2>Error</h2>
+			<h3>Page <span>not found!</span></h3>
+		</div>
+
+
+		<!--main section-->
+		<div class="container robo" style="min-height: 300px;">
+			<div class="wrapper advance">
+				<h1>Page Not Found!</h1>
+				<div id="error_page">
+					<p>Go back <a href="{{ url_for('index') }}">Home!</a></p>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 {% endblock %}

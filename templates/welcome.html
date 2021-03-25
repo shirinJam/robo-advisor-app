@@ -32,9 +32,6 @@
 	<!--featherlight css-->
 	<link href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 	
-	<!-- Template Main CSS File -->
-	<link href="../static/assets/css/style.css" rel="stylesheet">
-	
 	<!-- fontawesome -->
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/all.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/fontawesome/css/fontawesome.css')}}">
@@ -49,92 +46,78 @@
 </head>
 <body>
 <!--Navigation bar Section-->
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top" style="top: 0;">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="index.html">Robo<span>Fina</span></a></h1>
-
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="{{url_for('welcome')}}" class="btn-get-started">Get Started</a></li>
-          <li><a href="{{url_for('login_page')}}" class="btn-get-started">Login</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-
-    </div>
-  </header><!-- End Header -->
+	<!-- ======= Header ======= -->
+	<header id="header" class="fixed-top" style="top: 0;">
+		<div class="container d-flex align-items-center">
+			<h1 class="logo mr-auto"><a href="{{ url_for('index')}}">Robo<span>Fina</span></a></h1>
+			<nav class="nav-menu d-none d-lg-block">
+				<ul>
+					<li class="active"><a href="{{url_for('welcome')}}">Welcome</a></li>
+					<li><a href="/#contact">Contact</a></li>
+					<li><a href="#" class="btn-get-started" >Login</a></li>
+				</ul>
+			</nav><!-- .nav-menu -->
+		</div>
+	</header><!-- End Header -->
 
 <!--HOME Section-->
 
 
 {% block content %}
 
-<div id="home-content-box" class="text-left">
-	<div id="home-heading">
-		<h1> <img style="vertical-align: text-top; margin-left: 30px; margin-right: 10px; padding-bottom:12px;" src="/static/img/robo_advisor_logo_2.png" height="50">Welcome</h1>
-	</div>
-</div>
+	<section id="welcome" class="welcome section-bg">
+		<div class="container" data-aos="fade-up">
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-12">
+			<div class="section-title">
+				<h2>Welcome</h2>
+				<h3>Robo <span>Steps</span></h3>
+			</div>
+
 			<!--main section-->
 			<div class="container robo" >
 				<div class="row">
-					<div style="width:100%;margin:auto">
-						<div class="wrapper">
-							<form class="form-group" id="question_form" autocomplete="off" action="{{ url_for('adv_quest1') }}" method="POST">
-								<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-								<!-- This is for Question No. 1 -->
-								<div class="name" style="color: white;">
-									<h4>You are only 3 steps away from achieving your personalised Portfolio!</h4>
-							
-									<br>
-
-									<ol>
-										<li><h5>Answer the questions based on your demographic background</h5></li>
-										<li><h5>Read and carefully answer the scenario based questions</h5></li>
-										<li><h5>Finally provide your investment amount</h5></li>
-									</ol> 
-
-									<br>
-
-									<p style="color: white;">In case of any questions or assistance required please Contact us using <a href="{{ url_for('contact_us') }}">Contact Us</a> page</p>
-								
-								</div>
-								<small id="emailHelp" class="form-text text-muted">Disclaimer: We do not save any data!</small>
-
-								<div class="quest-submit">
-									<button type="submit" class="btn btn-primary btn-sm sub_btn" value="Next">
-									<img src="/static/img/enter.svg" alt="RobZEE" title="Next" height="20"> NEXT</button>
-								</div>
-							</form>
+					<div class="wrapper">
+						<div class="name" style="color: white;">
+							<h4>You are only 3 steps away from achieving your personalised Portfolio!</h4>
+							<br>
+							<ol>
+								<li><h5>Answer the questions based on your <span>demographic background</span></h5></li>
+								<li><h5>Read and carefully answer the <span>scenario based questions</span></h5></li>
+								<li><h5>Finally provide your <span>investment amount</span></h5></li>
+							</ol> 
+							<br>
+							<p style="color: white;">In case of any questions or assistance required please make use of <a href="/#contact">Contact Us</a> page</p>
 						</div>
+						<small id="emailHelp" class="form-text text-muted">Disclaimer: We do not save any data!</small>
 					</div>
 				</div>
+				<div class="quest-submit">
+					<a href="{{url_for('adv_quest1')}}" class="btn-get-started scrollto" style="padding:10px 20px">
+					<img src="/static/img/enter.svg" alt="RoboFina" title="Next" height="20"> NEXT</a>
+				</div>		
 			</div>
 		</div>
-	</div>
-</div>
-{% endblock %}
+	</section>
 
-<footer id="footer" style="position: relative!important;bottom: 0px!important;">
-	<div class="container py-4">
-		<div class="copyright">
-		&copy; Copyright <strong><span style="color:#51d8af">Shirin Khosravi Jam</span></strong>. All Rights Reserved
+	{% endblock %}
+
+	<footer id="footer">
+		<div class="container py-4">
+			<div class="copyright">
+			&copy; Copyright <strong><span style="color:#51d8af">Shirin Khosravi Jam</span></strong>. All Rights Reserved
+			</div>
+			<div class="credits" style="display:none;">
+			<!-- All the links in the footer should remain intact. -->
+			<!-- You can delete the links only if you purchased the pro version. -->
+			<!-- Licensing information: https://bootstrapmade.com/license/ -->
+			<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+			Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+			</div>
 		</div>
-		<div class="credits" style="display:none;">
-		<!-- All the links in the footer should remain intact. -->
-		<!-- You can delete the links only if you purchased the pro version. -->
-		<!-- Licensing information: https://bootstrapmade.com/license/ -->
-		<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-		Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-		</div>
-  	</div>
-</footer><!-- End Footer -->
-	
+	</footer><!-- End Footer -->
+
+	<div id="preloader"></div>
+
 	<!-- Jquery javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

@@ -482,7 +482,7 @@ def adv_quest3():
             
             # fetching the amount of risk user can take from
             session['risk_cap'] = int(request.form['risk_cap'])
-
+            
             # fetching answer for 'how large of a decline in investment will be accepted'
             session['invest_decline'] = int(request.form['invest_decline'])
 
@@ -698,4 +698,4 @@ def not_found(e):
 
 # running above python script
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
