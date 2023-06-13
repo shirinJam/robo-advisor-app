@@ -305,7 +305,7 @@ def get_asset_allocation(riskTolerance):
     stock_weights = pd.DataFrame(port_alloc(sb_weight=stocks,asset_list=['VTI','VEA','VWO','VHT','VNQ']))
     bond_weights  = pd.DataFrame(port_alloc(sb_weight=bonds,asset_list=['EMB','BNDX','MUB']))
     other_weights = pd.DataFrame(port_alloc(sb_weight=other,asset_list=['VIPSX']))
-    final_weights = stock_weights.append(bond_weights.append(other_weights))
+    final_weights = pd.concat([stock_weights, bond_weights, other_weights], ignore_index=True)
     final_weights = final_weights.set_index(0)
     
     # returning allocated portfolio in dictionary
